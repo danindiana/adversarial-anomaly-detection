@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this research code or benchmark, please cite this repository."
+title: "Adversarial Anomaly Detection Under Correlated Backgrounds"
+abstract: "Synthetic, reproducible study of ON/OFF anomaly detection when an adaptive actor can shrink its footprint, contaminate controls, exploit correlated background noise, and respond to the observer's test design."
+type: software
+authors:
+  - given-names: "Benjamin W."
+    family-names: "Denio"
+version: 1.4.2
+license: MIT
+repository-code: "https://github.com/danindiana/adversarial-anomaly-detection"
+keywords:
+  - adversarial anomaly detection
+  - ON/OFF detection
+  - robust experimental design
+  - covariance estimation
+  - Stackelberg games
