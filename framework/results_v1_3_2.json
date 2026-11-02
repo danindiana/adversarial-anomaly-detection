@@ -1,0 +1,156 @@
+{
+  "model": "v1.3.2 reach-limited ON/OFF contamination game; fine signal grid and utility sensitivity",
+  "seed": 20261101,
+  "n_reps_per_policy": 20000,
+  "null_calibration_reps": 250000,
+  "signal_grid": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.5,
+    9.0,
+    9.5,
+    10.0,
+    12.5,
+    15.0,
+    20.0,
+    25.0,
+    30.0
+  ],
+  "utility_sweep": {
+    "base_activity": [
+      0.3,
+      0.6,
+      0.9
+    ],
+    "detection_penalty": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "benefit_curvature": [
+      2.5,
+      5.0,
+      10.0
+    ]
+  },
+  "cost_parameters": {
+    "default_activity_benefit": 0.6,
+    "default_detection_penalty": 1.0,
+    "default_benefit_curvature": 5.0,
+    "c_reach": 0.02,
+    "c_spread": 0.04,
+    "c_measure": 0.01,
+    "method_costs": {
+      "empirical_std": 0.0,
+      "empirical_mad": 0.02,
+      "protected_scale": 0.06,
+      "physics_only": 0.0,
+      "omnibus_protected": 0.06,
+      "combined_protected": 0.06,
+      "omnibus_physics": 0.0,
+      "combined_physics": 0.0
+    },
+    "false_alarm_cost": 0.1
+  },
+  "equilibria": [
+    {
+      "tau": 0.0,
+      "best_response": "s=3.5|r=0|none|delta=0",
+      "regime": "suppress",
+      "signal_s": 3.5,
+      "reach_r": 0,
+      "attack_mode": "none",
+      "spread_delta": 0.0,
+      "expected_detection_power": 0.08481078146949159,
+      "expected_false_alarm": 0.010475537456061132,
+      "expected_k": 4.0,
+      "defender_loss": 0.20120566698844505,
+      "hider_utility": 0.11300794032002533,
+      "policy": "4:physics_only=0.751792;4:combined_physics=0.248208"
+    },
+    {
+      "tau": 3.0,
+      "best_response": "s=5|r=0|none|delta=0",
+      "regime": "suppress",
+      "signal_s": 5.0,
+      "reach_r": 0,
+      "attack_mode": "none",
+      "spread_delta": 0.0,
+      "expected_detection_power": 0.09400769314363869,
+      "expected_false_alarm": 0.010769971088039305,
+      "expected_k": 5.327240378722031,
+      "defender_loss": 0.3408474776101145,
+      "hider_utility": 0.16439824170039716,
+      "policy": "4:protected_scale=0.643598;6:protected_scale=0.049184;8:combined_protected=0.307218"
+    },
+    {
+      "tau": 10.0,
+      "best_response": "s=15|r=0|none|delta=0",
+      "regime": "operate_uncontaminated",
+      "signal_s": 15.0,
+      "reach_r": 0,
+      "attack_mode": "none",
+      "spread_delta": 0.0,
+      "expected_detection_power": 0.09850628489493475,
+      "expected_false_alarm": 0.009451989199769813,
+      "expected_k": 4.0,
+      "defender_loss": 0.7665564783808877,
+      "hider_utility": 0.4183055847931369,
+      "policy": "4:empirical_std=0.175150;4:protected_scale=0.031009;4:combined_protected=0.793841"
+    }
+  ],
+  "regime_summary": [
+    {
+      "tau": 0.0,
+      "settings": 27,
+      "abstain": 2,
+      "suppress": 18,
+      "operate_uncontaminated": 6,
+      "contaminate": 1,
+      "min_positive_signal": 1.0,
+      "max_signal": 30.0
+    },
+    {
+      "tau": 3.0,
+      "settings": 27,
+      "abstain": 2,
+      "suppress": 19,
+      "operate_uncontaminated": 5,
+      "contaminate": 1,
+      "min_positive_signal": 2.5,
+      "max_signal": 30.0
+    },
+    {
+      "tau": 10.0,
+      "settings": 27,
+      "abstain": 0,
+      "suppress": 4,
+      "operate_uncontaminated": 23,
+      "contaminate": 0,
+      "min_positive_signal": 6.5,
+      "max_signal": 30.0
+    }
+  ],
+  "limitations": [
+    "finite strategy and utility grids",
+    "Monte Carlo power estimates reused across utility sweep",
+    "independent Gaussian channels; covariance attacks deferred to v1.4",
+    "equal-means omnibus is one consequence of exchangeability, not a test of full exchangeability",
+    "no observational evidence about concealed populations"
+  ]
+}

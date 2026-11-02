@@ -1,0 +1,4 @@
+tau,best_response,regime,signal_s,reach_r,attack_mode,spread_delta,expected_detection_power,expected_false_alarm,expected_k,defender_loss,hider_utility,policy
+0.0,s=3.5|r=0|none|delta=0,suppress,3.5,0,none,0.0,0.08481078146949159,0.010475537456061132,4.0,0.20120566698844505,0.11300794032002533,4:physics_only=0.751792;4:combined_physics=0.248208
+3.0,s=5|r=0|none|delta=0,suppress,5.0,0,none,0.0,0.09400769314363869,0.010769971088039305,5.327240378722031,0.3408474776101145,0.16439824170039716,4:protected_scale=0.643598;6:protected_scale=0.049184;8:combined_protected=0.307218
+10.0,s=15|r=0|none|delta=0,operate_uncontaminated,15.0,0,none,0.0,0.09850628489493475,0.009451989199769813,4.0,0.7665564783808877,0.4183055847931369,4:empirical_std=0.175150;4:protected_scale=0.031009;4:combined_protected=0.793841
