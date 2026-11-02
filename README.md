@@ -23,6 +23,41 @@ A reproducible research project on ON/OFF anomaly detection when an adaptive act
 
 > **Status:** research prototype. **All data are synthetic.** Nothing here is evidence that any hidden or concealed population exists. The framework describes what evidence would have to look like for such a hypothesis to become distinguishable from ordinary processes.
 
+## Quickstart (Ubuntu 24.04 LTS)
+
+One command clones the repo, builds a Python virtual environment, installs the dependencies, reruns the verifiers and checks every regenerated table against the committed one, byte for byte:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/danindiana/adversarial-anomaly-detection/main/setup.sh | bash
+```
+
+It takes under a minute on a stock Ubuntu 24.04 machine (Python 3.12), runs on CPU only, and installs `git` and `python3-venv` with `apt-get` if they are missing. Options go in front of `bash`:
+
+| Variable | Effect |
+|---|---|
+| `AAD_DIR=~/src/aad` | Clone somewhere other than `~/adversarial-anomaly-detection` |
+| `AAD_FULL=1` | Also rerun the v1.3.3 Monte Carlo game (adds about a minute) |
+| `AAD_PYTHON=python3.13` | Build the environment with a different interpreter (3.11+) |
+| `AAD_SKIP_APT=1` | Never call `apt-get`; just report what is missing |
+| `AAD_SKIP_VERIFY=1` | Install only |
+
+For example: `curl -fsSL …/setup.sh | AAD_FULL=1 bash`. To read the script before running it:
+
+```bash
+curl -fsSLO https://raw.githubusercontent.com/danindiana/adversarial-anomaly-detection/main/setup.sh
+less setup.sh && bash setup.sh
+```
+
+Or by hand:
+
+```bash
+sudo apt update && sudo apt install -y git python3-venv
+git clone https://github.com/danindiana/adversarial-anomaly-detection
+cd adversarial-anomaly-detection
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r framework/requirements.txt -r covariance/requirements.txt
+```
+
 ## Origin
 
 The work began as a deliberately speculative thought experiment. Assume some mixture of these is true:
@@ -69,6 +104,7 @@ covariance/           Covariance stage, v1.4.0 → v1.4.2 (protected / known-Σ 
 independent-checks/   Scripts used to independently re-run and probe each release
 SHOWCASE.md           Live-demo framing and collaboration asks
 assets/logo.svg       Project logo
+setup.sh              One-shot setup and verification script (Ubuntu 24.04)
 CITATION.cff          How to cite this repository
 ```
 
@@ -78,12 +114,12 @@ Each release is a commit with a matching tag (`v1.0.0` … `v1.4.2`), so `git di
 
 ## Reproducing
 
-Python 3.11+.
+`setup.sh` (see [Quickstart](#quickstart-ubuntu-2404-lts)) runs all of this. To run the steps yourself, with Python 3.11+:
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r framework/requirements.txt
+pip install -r framework/requirements.txt -r covariance/requirements.txt
 
 # Protected-covariance benchmark (v1.4.2) and its five invariants:
 # model reduction, common-mode cancellation, simulated null size,
