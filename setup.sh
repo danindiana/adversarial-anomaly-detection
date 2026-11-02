@@ -128,6 +128,10 @@ say "Verifying the core framework (v1.3.4 reporting, v1.3.5 mixed frontier)"
   python verify_models_v1_3_5.py --input joint_strategy_results_v1_3_3.csv --output-dir out >/dev/null )
 compare framework
 
+say "Verifying the advertising case study (adfraud)"
+( cd adfraud && rm -rf out && python adfraud_case_study.py --output-dir out --no-figures >/dev/null )
+compare adfraud
+
 echo
 if [ "$fails" -eq 0 ]; then
   say "${G}All regenerated tables match the committed ones byte for byte.${N}"

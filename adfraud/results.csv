@@ -1,0 +1,22 @@
+result,metric,value
+noise_floor,users_for_expected_t3_at_LR_example,1629697
+noise_floor,power_at_200k_users_two_sided_5pct,0.1817
+attribution_gap,Worthless (H0) attributed_per_1000,1.978
+attribution_gap,Worthless (H0) incremental_per_1000,0.039
+attribution_gap,Effective (H1) attributed_per_1000,3.006
+attribution_gap,Effective (H1) incremental_per_1000,0.918
+attribution_gap,Attribution theft (H2) attributed_per_1000,9.0
+attribution_gap,Attribution theft (H2) incremental_per_1000,0.995
+theft_detection,share_at_50pct_power_50000_per_arm,0.1611
+theft_detection,share_at_50pct_power_200000_per_arm,0.0805
+theft_detection,share_at_50pct_power_1000000_per_arm,0.036
+theft_detection,share_at_50pct_power_200k_tau_0.0,0.0805
+theft_detection,share_at_50pct_power_200k_tau_0.0005,0.1215
+theft_detection,share_at_50pct_power_200k_tau_0.001,0.199
+theft_detection,false_alarm_if_tau_ignored_200k_tau_0.0,0.01
+theft_detection,false_alarm_if_tau_ignored_200k_tau_0.0005,0.2497
+theft_detection,false_alarm_if_tau_ignored_200k_tau_0.001,0.7807
+holdout_control,fake_relative_lift_at_q10,0.0366
+holdout_control,fake_relative_lift_at_q25,0.0879
+holdout_control,fake_relative_lift_at_q50,0.183
+holdout_control,advertiser_relative_ci95,0.0434

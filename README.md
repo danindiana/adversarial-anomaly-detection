@@ -96,11 +96,30 @@ C*(Σ, U) = max_{u ∈ U, ‖u‖ = 1}  1 / sqrt(uᵀ Σ⁻¹ u)
 
 If every unit direction were feasible, the easiest direction to hide in would be the principal variance direction, giving `C* = sqrt(λ_max(Σ))`. In practice a hidden actor's physical needs constrain the feasible set `U`, and concealment gets expensive when those needs force its footprint away from the background's high-variance directions.
 
+## Application: advertising measurement and ad fraud
+
+Digital advertising is a domain where the hidden, adaptive actor is real. Ad effects are tiny next to ordinary sales noise, platforms often measure their own performance, and attribution can be stolen by whoever touches a customer last. [`adfraud/`](adfraud/) maps the framework onto it, reviews the experimental literature, and runs a reproducible case study with five figures.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="adfraud/figures/attribution_gap-dark.png">
+  <img alt="Grouped bars, conversions per 1,000 users. Worthless campaign: 2.0 attributed, 0.0 incremental. Effective: 3.0 attributed, 0.9 incremental. Attribution theft: 9.0 attributed, 1.0 incremental." src="adfraud/figures/attribution_gap-light.png" width="720">
+</picture>
+
+Headline results (synthetic unless noted):
+
+- A Lewis & Rao (2015) example campaign needs **1.6 million users** before its effect is distinguishable from zero, so a worthless or fraudulent channel can stay invisible for years.
+- With six vendors and 200k-user holdouts, one vendor can claim **8%** of organic conversions as its own before a cross-vendor test has even odds of catching it; honest differences between vendors raise that to 12–20%.
+- A vendor that chooses its own holdout group can show **+8.8%** lift for a campaign that does nothing by filling a quarter of the holdout with likely non-buyers. Advertiser-randomized holdouts prevent it.
+- Published: across 663 Facebook experiments, non-experimental estimates miss by a median 62–115 percentage points, against median true lifts of 6–28% (Gordon, Moakler & Zettelmeyer, 2023).
+
+None of this shows that any company commits fraud; it shows where measurement is attackable and what protects it. Next step: the Criteo randomized uplift dataset.
+
 ## Repository layout
 
 ```
 framework/            Core series, v1.0.0 → v1.3.6 (each release replaced this folder; see git history)
 covariance/           Covariance stage, v1.4.0 → v1.4.2 (protected / known-Σ analytic benchmark)
+adfraud/              Application: advertising measurement and ad fraud (case study, figures, literature)
 independent-checks/   Scripts used to independently re-run and probe each release
 SHOWCASE.md           Live-demo framing and collaboration asks
 assets/logo.svg       Project logo

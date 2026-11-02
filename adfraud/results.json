@@ -1,0 +1,73 @@
+{
+  "synthetic": true,
+  "settings": {
+    "organic_conversion": 0.02,
+    "vendors": 6,
+    "alpha": 0.01,
+    "seed": 20261102
+  },
+  "noise_floor": {
+    "lr_d": 0.0047,
+    "lr_users_for_t3": 1629696.6953372569,
+    "lr_expected_t_2M": 3.3234018715767735,
+    "lr_expected_t_200k": 1.050951949424901,
+    "lr_power_200k_one_sided_5pct": 0.18167188651819155
+  },
+  "attribution_gap": [
+    {
+      "campaign": "Worthless (H0)",
+      "true_incremental_per_1000": 0.0,
+      "attributed_per_1000": 1.978,
+      "measured_incremental_per_1000": 0.039,
+      "incremental_ci95_per_1000": 0.3892319617970446,
+      "attributed_over_incremental": 50.71794871794872
+    },
+    {
+      "campaign": "Effective (H1)",
+      "true_incremental_per_1000": 1.0,
+      "attributed_per_1000": 3.006,
+      "measured_incremental_per_1000": 0.9179999999999999,
+      "incremental_ci95_per_1000": 0.39347213420233157,
+      "attributed_over_incremental": 3.2745098039215685
+    },
+    {
+      "campaign": "Attribution theft (H2)",
+      "true_incremental_per_1000": 1.0,
+      "attributed_per_1000": 9.0,
+      "measured_incremental_per_1000": 0.995,
+      "incremental_ci95_per_1000": 0.39159929118074155,
+      "attributed_over_incremental": 9.045226130653266
+    }
+  ],
+  "theft_detection": {
+    "share_at_50pct_power_by_holdout_per_arm": {
+      "50000": 0.16108664898885344,
+      "200000": 0.08054332449442672,
+      "1000000": 0.036020069740672414
+    },
+    "share_at_50pct_power_by_tau_200k": {
+      "0.0": 0.08054332449442672,
+      "0.0005": 0.12149794858002111,
+      "0.001": 0.19896061086247763
+    },
+    "false_alarm_if_tau_ignored_200k": {
+      "0.0": 0.009999999999999997,
+      "0.0005": 0.24965649277869095,
+      "0.001": 0.7806559982544896
+    },
+    "monte_carlo_check": {
+      "steal_share": 0.08054332449442672,
+      "analytic_power": 0.5,
+      "simulated_power": 0.4934,
+      "simulated_null_size": 0.00735
+    }
+  },
+  "holdout_control": {
+    "fake_relative_lift_at_q10": 0.036605909355124665,
+    "fake_relative_lift_at_q25": 0.08785418245229926,
+    "fake_relative_lift_at_q50": 0.18302954677562333,
+    "advertiser_relative_ci95": 0.04341640692381453,
+    "mean_propensity": 0.01997296049031149,
+    "mean_propensity_vendor_low_half": 0.012661676677693202
+  }
+}
