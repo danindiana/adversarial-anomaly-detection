@@ -1,0 +1,5 @@
+invariant,pass,observed_error,tolerance
+model_reduction_rho0_c1,True,0.0,1e-12
+common_mode_contrast_invariance,True,0.0,1e-10
+protected_omnibus_nominal_size,True,5.204170427930421e-18,1e-12
+v135_frontier_regression_mc_tolerance,True,0.005475392965632764,0.006
