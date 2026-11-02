@@ -1,0 +1,137 @@
+{
+  "model": "v1.3.1 synthetic Gaussian ON/OFF; attacker chooses s, r, mode and delta; defender has directional/omnibus/combined policies",
+  "seed": 20261101,
+  "n_reps_per_policy": 30000,
+  "null_calibration_reps": 250000,
+  "critical_values": {
+    "4:empirical_mad": 9.69864773475835,
+    "4:empirical_std": 4.5407028585681335,
+    "4:protected_scale": 2.3263478740408408,
+    "4:physics_only": 2.3263478740408408,
+    "6:empirical_mad": 5.663544018954529,
+    "6:empirical_std": 3.364929998907218,
+    "6:protected_scale": 2.3263478740408408,
+    "6:physics_only": 2.3263478740408408,
+    "8:empirical_mad": 4.465929354177086,
+    "8:empirical_std": 2.9979515668685286,
+    "8:protected_scale": 2.3263478740408408,
+    "8:physics_only": 2.3263478740408408
+  },
+  "cost_parameters": {
+    "activity_benefit": 0.6,
+    "detection_penalty": 1.0,
+    "c_reach": 0.02,
+    "c_spread": 0.04,
+    "c_measure": 0.01,
+    "method_costs": {
+      "empirical_std": 0.0,
+      "empirical_mad": 0.02,
+      "protected_scale": 0.06,
+      "physics_only": 0.0,
+      "omnibus_protected": 0.06,
+      "combined_protected": 0.06,
+      "omnibus_physics": 0.0,
+      "combined_physics": 0.0
+    },
+    "false_alarm_cost": 0.1
+  },
+  "benchmark": [
+    {
+      "k": 4,
+      "delta": 0.0,
+      "power": 0.77183,
+      "mc_n": 200000
+    },
+    {
+      "k": 4,
+      "delta": 10.0,
+      "power": 0.007015,
+      "mc_n": 200000
+    },
+    {
+      "k": 4,
+      "delta": 20.0,
+      "power": 0.0,
+      "mc_n": 200000
+    },
+    {
+      "k": 8,
+      "delta": 0.0,
+      "power": 0.99062,
+      "mc_n": 200000
+    },
+    {
+      "k": 8,
+      "delta": 10.0,
+      "power": 0.545785,
+      "mc_n": 200000
+    },
+    {
+      "k": 8,
+      "delta": 20.0,
+      "power": 0.001305,
+      "mc_n": 200000
+    }
+  ],
+  "equilibria": [
+    {
+      "tau": 0.0,
+      "best_response": "s=5|r=0|none|delta=0",
+      "signal_s": 5.0,
+      "reach_r": 0,
+      "attack_mode": "none",
+      "spread_delta": 0.0,
+      "expected_detection_power": 0.14690393603936042,
+      "size_valid_policies": "4:empirical_std;4:empirical_mad;4:protected_scale;4:physics_only;4:omnibus_protected;4:combined_protected;4:omnibus_physics;4:combined_physics;6:empirical_std;6:empirical_mad;6:protected_scale;6:physics_only;6:omnibus_protected;6:combined_protected;6:omnibus_physics;6:combined_physics;8:empirical_std;8:empirical_mad;8:protected_scale;8:physics_only;8:omnibus_protected;8:combined_protected;8:omnibus_physics;8:combined_physics",
+      "expected_false_alarm": 0.010243911439114392,
+      "expected_k": 4.0,
+      "defender_loss": 0.25429840713407137,
+      "hider_utility": 0.11150199880467544,
+      "follower_exploitability": 0.0,
+      "policy": "4:physics_only=0.315867;4:combined_physics=0.684133"
+    },
+    {
+      "tau": 3.0,
+      "best_response": "s=5|r=0|none|delta=0",
+      "signal_s": 5.0,
+      "reach_r": 0,
+      "attack_mode": "none",
+      "spread_delta": 0.0,
+      "expected_detection_power": 0.055976613566762964,
+      "size_valid_policies": "4:empirical_std;4:empirical_mad;4:protected_scale;4:omnibus_protected;4:combined_protected;6:empirical_std;6:empirical_mad;6:protected_scale;6:omnibus_protected;6:combined_protected;8:empirical_std;8:empirical_mad;8:protected_scale;8:omnibus_protected;8:combined_protected",
+      "expected_false_alarm": 0.009867880511556022,
+      "expected_k": 4.2306505466651485,
+      "defender_loss": 0.3115049563624456,
+      "hider_utility": 0.20242932127727287,
+      "follower_exploitability": 2.7755575615628914e-17,
+      "policy": "4:empirical_std=0.463236;4:combined_protected=0.479101;8:omnibus_protected=0.057663"
+    },
+    {
+      "tau": 10.0,
+      "best_response": "s=20|r=0|none|delta=0",
+      "signal_s": 20.0,
+      "reach_r": 0,
+      "attack_mode": "none",
+      "spread_delta": 0.0,
+      "expected_detection_power": 0.23735222403480155,
+      "size_valid_policies": "4:empirical_std;4:empirical_mad;4:protected_scale;4:omnibus_protected;4:combined_protected;6:empirical_std;6:empirical_mad;6:protected_scale;6:omnibus_protected;6:combined_protected;8:empirical_std;8:empirical_mad;8:protected_scale;8:omnibus_protected;8:combined_protected",
+      "expected_false_alarm": 0.010653518216421968,
+      "expected_k": 6.788907014681891,
+      "defender_loss": 0.8916021979336597,
+      "hider_utility": 0.3626477759651985,
+      "follower_exploitability": 0.0,
+      "policy": "4:protected_scale=0.302773;8:combined_protected=0.697227"
+    }
+  ],
+  "limitations": [
+    "private control selection; fixed attacked identities before sampling",
+    "independent Gaussian channel offsets; no correlated heterogeneity",
+    "protected scale is an oracle available only when clean calibration is physically secured",
+    "physics-only ignores tau and can have incorrect false-alarm size",
+    "finite discrete strategy sets; follower sees leader commitment, not realization",
+    "omnibus tests assume independent exchangeable Gaussian channels with known scale",
+    "one-sided and omnibus tests address distinct alternatives; Bonferroni combination controls family-wise size",
+    "Monte Carlo best replies and equilibrium depend on seed and costs",
+    "no data about actual concealed populations"
+  ]
+}
