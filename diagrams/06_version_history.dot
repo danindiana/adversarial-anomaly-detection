@@ -1,0 +1,45 @@
+digraph version_history {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.25, ranksep=0.32,
+           label="Version history: what each release added (blue) and what cross-checking corrected (red)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.22,0.12",
+           fillcolor="#161b22", fontsize=12];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.8];
+
+    v100 [label="v1.0.0  model comparison · Poisson–Gamma · secrecy hazard · first hider", color="#58a6ff", fillcolor="#13294d"];
+    v110 [label="v1.1.0  closed form s* = √(κV) · ON-only non-identifiability · toy Stackelberg", color="#58a6ff", fillcolor="#13294d"];
+    v120 [label="v1.2.0  coverage game · heterogeneity τ · misspecification false alarms", color="#58a6ff", fillcolor="#13294d"];
+    v130 [label="v1.3.0  joint hider strategy · robust scale · size-valid filter", color="#58a6ff", fillcolor="#13294d"];
+    v131 [label="v1.3.1  omnibus + combined exchangeability tests", color="#58a6ff", fillcolor="#13294d"];
+    v132 [label="v1.3.2  fine signal grid · utility sweep · retitled as methods study", color="#58a6ff", fillcolor="#13294d"];
+    v133 [label="v1.3.3  symmetric grid · contamination cost · willingness to pay", color="#58a6ff", fillcolor="#13294d"];
+    v134 [label="v1.3.4  size-validity · grid-ceiling bounds · pure frontier", color="#58a6ff", fillcolor="#13294d"];
+    v135 [label="v1.3.5  exact mixed-policy frontier (LP)", color="#58a6ff", fillcolor="#13294d"];
+    v136 [label="v1.3.6  dependency fix", color="#58a6ff", fillcolor="#13294d"];
+    v140 [label="v1.4.0  protected-Σ analytic benchmark · alignment as hider choice", color="#bc8cff", fillcolor="#13294d"];
+    v141 [label="v1.4.1  real simulation invariants · cell-level regression", color="#bc8cff", fillcolor="#13294d"];
+    v142 [label="v1.4.2  Cholesky sampling · documented regression bound", color="#bc8cff", fillcolor="#13294d"];
+
+    v100 -> v110 -> v120 -> v130 -> v131 -> v132 -> v133 -> v134 -> v135 -> v136 -> v140 -> v141 -> v142;
+
+    node [color="#f85149", fillcolor="#161b22", fontsize=11];
+    x1 [label="Invented leak rate → Grimes (2016): ~80% stay hidden\n'3× more cover' → calibration shrinks footprint,\nnot detectability (KL* = κ/2)"];
+    x3 [label="Single-control game discards data → coverage game"];
+    x4 [label="Mean-only test → omnibus restores power (20% → 84%)"];
+    x5 [label="Equilibrium on grid floor → finer grid"];
+    x6 [label="'Contamination rarely chosen' → artifact of fixed costs"];
+    x7 [label="Pure frontier overstated tradeoff by 17–28%"];
+    x8 [label="Tautological size check · post-hoc tolerance\n· SVD sampling not portable"];
+
+    v110 -> x1 [style=dashed, color="#f85149", arrowhead=none];
+    v120 -> x3 [style=dashed, color="#f85149", arrowhead=none];
+    v131 -> x4 [style=dashed, color="#f85149", arrowhead=none];
+    v132 -> x5 [style=dashed, color="#f85149", arrowhead=none];
+    v133 -> x6 [style=dashed, color="#f85149", arrowhead=none];
+    v135 -> x7 [style=dashed, color="#f85149", arrowhead=none];
+    v142 -> x8 [style=dashed, color="#f85149", arrowhead=none];
+    {rank=same; v110; x1} {rank=same; v120; x3} {rank=same; v131; x4} {rank=same; v132; x5}
+    {rank=same; v133; x6} {rank=same; v135; x7} {rank=same; v142; x8}
+}

@@ -1,0 +1,42 @@
+digraph dataset_selection {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.35, ranksep=0.45,
+           label="Dataset selection: which data can actually test the framework?\n(candidate datasets are assessments, not yet analyzed)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    start [label="Candidate dataset", color="#39c5cf", fillcolor="#0d2e2e"];
+    q1 [label="Randomized control or holdout?\n(a protected causal anchor)", shape=diamond, style="filled", color="#58a6ff", fillcolor="#13294d", margin="0.1,0.05"];
+    q2 [label="Known hidden actor, or can\none be planted with known reach?", shape=diamond, style="filled", color="#58a6ff", fillcolor="#13294d", margin="0.1,0.05"];
+    q3 [label="Several channels on the\nsame units (to estimate Σ)?", shape=diamond, style="filled", color="#58a6ff", fillcolor="#13294d", margin="0.1,0.05"];
+    q4 [label="Aggregate or de-identified,\nwith a usable license?", shape=diamond, style="filled", color="#58a6ff", fillcolor="#13294d", margin="0.1,0.05"];
+
+    tier1 [label="Tier 1: validation test bed\nplant actors, measure detection\nagainst ground truth", color="#3fb950", fillcolor="#1f2937"];
+    tier2 [label="Tier 2: descriptive covariance work\nno causal claims", color="#d29922", fillcolor="#1f2937"];
+    reject [label="Do not use\n(individual-level scoring risk\nor no lawful basis)", color="#f85149"];
+    weak [label="Weak: observational only;\nconfounded by selection", color="#d29922", fillcolor="#1f2937"];
+
+    start -> q1;
+    q1 -> q2 [label=" yes", color="#3fb950", fontcolor="#3fb950"];
+    q1 -> weak [label=" no", color="#d29922", fontcolor="#d29922"];
+    q2 -> q3 [label=" yes", color="#3fb950", fontcolor="#3fb950"];
+    q2 -> tier2 [label=" no", color="#d29922", fontcolor="#d29922"];
+    q3 -> q4 [label=" yes", color="#3fb950", fontcolor="#3fb950"];
+    q3 -> tier2 [label=" no", color="#d29922", fontcolor="#d29922"];
+    q4 -> tier1 [label=" yes", color="#3fb950", fontcolor="#3fb950"];
+    q4 -> reject [label=" no", color="#f85149", fontcolor="#f85149"];
+    weak -> q4 [style=dashed];
+
+    subgraph cluster_cands {
+        label="Candidates"; style="rounded,dashed"; color="#8b949e"; fontcolor="#adbac7";
+        c1 [label="Criteo uplift  ~14M users, randomized\ntreatment/control, visit + conversion\n→ likely Tier 1 (12 anonymized features)", color="#3fb950", fillcolor="#1f2937"];
+        c2 [label="TalkingData clicks\nlabel = app install, not confirmed fraud\n→ Tier 2 unless actors are planted", color="#d29922", fillcolor="#1f2937"];
+        c3 [label="Advertiser financial panels\nad spend endogenous\n→ Tier 2 / weak", color="#d29922", fillcolor="#1f2937"];
+        c4 [label="Geo / brand-search shutoffs\nnatural ON/OFF\n→ Tier 1 if randomized", color="#3fb950", fillcolor="#1f2937"];
+        c5 [label="Seeded fraud / red-team logs\nknown hidden actor\n→ Tier 1", color="#3fb950", fillcolor="#1f2937"];
+    }
+    tier1 -> c1 [style=invis]; tier2 -> c2 [style=invis];
+}

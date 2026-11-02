@@ -1,0 +1,49 @@
+digraph dataset_curation {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.3, ranksep=0.5,
+           label="Dataset curation: from raw download to a frozen, auditable test bed\n(planned workflow for the first real dataset)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    subgraph cluster_acq {
+        label="Acquire"; style="rounded"; color="#3fb950"; fontcolor="#3fb950";
+        a1 [label="Download from the\nofficial source", color="#3fb950", fillcolor="#1f2937"];
+        a2 [label="Record license, version,\nSHA-256, date", color="#3fb950", fillcolor="#1f2937"];
+        a1 -> a2;
+    }
+
+    subgraph cluster_clean {
+        label="Inspect and clean"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        b1 [label="Schema + types\nmissing values, duplicates", color="#58a6ff", fillcolor="#13294d"];
+        b2 [label="Check the randomization\nbalance of features across arms", color="#58a6ff", fillcolor="#13294d"];
+        b3 [label="Privacy check\nno re-identification; aggregate", color="#f85149"];
+        b1 -> b2 -> b3;
+    }
+
+    subgraph cluster_split {
+        label="Split before analysis"; style="rounded"; color="#bc8cff"; fontcolor="#bc8cff";
+        c1 [label="Calibration set\nestimate B, τ, Σ̂_T", color="#bc8cff", fillcolor="#13294d"];
+        c2 [label="Operational set\ntests run here", color="#bc8cff", fillcolor="#13294d"];
+        c3 [label="Sealed holdout\nopened once, at the end", color="#bc8cff", fillcolor="#13294d", style="filled,rounded,dashed"];
+    }
+
+    subgraph cluster_plant {
+        label="Plant known actors"; style="rounded"; color="#f0883e"; fontcolor="#f0883e";
+        d1 [label="Synthetic actors with stated\nreach, signal, attack mode", color="#f0883e"];
+        d2 [label="Truth file kept separate\nfrom the analysis code", color="#f0883e"];
+        d1 -> d2;
+    }
+
+    subgraph cluster_freeze {
+        label="Freeze"; style="rounded"; color="#d29922"; fontcolor="#d29922";
+        e1 [label="Datasheet: provenance,\nknown biases, intended use", color="#d29922", fillcolor="#1f2937"];
+        e2 [label="Manifest + seeds;\nregenerate byte for byte", color="#d29922", fillcolor="#1f2937"];
+        e1 -> e2;
+    }
+
+    a2 -> b1; b3 -> c1; b3 -> c2; b3 -> c3;
+    c2 -> d1; d2 -> e1; c1 -> e1 [style=dashed]; c3 -> e1 [style=dashed];
+}

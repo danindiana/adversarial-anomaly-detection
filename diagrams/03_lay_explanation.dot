@@ -1,0 +1,32 @@
+digraph lay_explanation {
+    graph [bgcolor="#0d1117", rankdir=LR, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.35, ranksep=0.65,
+           label="Plain-language version: how do you catch something that knows you are looking?\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22", fontsize=13];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    hider [label="A careful hider\nwants to act without being noticed", color="#f0883e"];
+    noise [label="Ordinary noise\neveryday ups and downs\nthat nobody can fully explain", color="#8b949e"];
+    blend [label="It sizes its activity\nto blend into that noise", color="#f0883e"];
+
+    subgraph cluster_observer {
+        label="What the observer can do"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        o1 [label="Understand normal better\nless unexplained noise =\nless room to hide", color="#58a6ff", fillcolor="#13294d"];
+        o2 [label="Cross-check independent sources\nlike witnesses: tampering makes\nthe stories disagree", color="#58a6ff", fillcolor="#13294d"];
+        o3 [label="Be unpredictable\nrandomize which comparisons\nand which tests you use", color="#58a6ff", fillcolor="#13294d"];
+        o4 [label="Look at shared infrastructure,\nnot individual people", color="#58a6ff", fillcolor="#13294d"];
+    }
+
+    out1 [label="Usually: the hider does less\ngood detection suppresses activity\nmore often than it catches anyone", color="#3fb950", fillcolor="#1f2937"];
+    out2 [label="Limit: perfect mimicry\nleaves no trace at all", color="#d29922", fillcolor="#1f2937"];
+    warn [label="Never score individuals\n1-in-10,000 false alarms would flag\n~800,000 people per 1,000 real cases", color="#f85149"];
+
+    hider -> blend; noise -> blend;
+    blend -> o1; blend -> o2; blend -> o3; blend -> o4;
+    o1 -> out1; o2 -> out1; o3 -> out1; o4 -> out1;
+    blend -> out2 [style=dashed, color="#d29922"];
+    o4 -> warn [style=dashed, color="#f85149"];
+}

@@ -1,0 +1,40 @@
+digraph howto_operationalize {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.35, ranksep=0.45,
+           label="How to operationalize: applying the framework to a real monitoring problem\n(proposed protocol; not yet validated on real data)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    subgraph cluster_design {
+        label="Design before looking at outcomes"; style="rounded"; color="#bc8cff"; fontcolor="#bc8cff";
+        d1 [label="Define channels with different owners\n(who could tamper with each?)", color="#bc8cff", fillcolor="#13294d"];
+        d2 [label="Write down feasible footprints U\nwhat would a real effect vs a fake one move?", color="#bc8cff", fillcolor="#13294d"];
+        d3 [label="Preregister priors, tests, α,\nstop rules and a holdout sample", color="#bc8cff", fillcolor="#13294d"];
+    }
+
+    subgraph cluster_measure {
+        label="Measure"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        m1 [label="Protected control: randomized holdout\nassignment private to the observer", color="#58a6ff", fillcolor="#13294d"];
+        m2 [label="Estimate Σ̂_T from protected periods\nfull vs structured · shrinkage · robust", color="#58a6ff", fillcolor="#13294d"];
+        m3 [label="Many controls, sampled at random;\nrandomize which test runs", color="#58a6ff", fillcolor="#13294d"];
+    }
+
+    subgraph cluster_test {
+        label="Test"; style="rounded"; color="#d29922"; fontcolor="#d29922";
+        t1 [label="Directional lift (ON vs OFF)", color="#d29922", fillcolor="#1f2937"];
+        t2 [label="Omnibus consistency\nδ̂ᵀ Σ̂⁻¹ δ̂ with finite-T calibration (F, not χ²)", color="#d29922", fillcolor="#1f2937"];
+        t3 [label="Compare direction of δ̂ with\npredeclared footprint families", color="#d29922", fillcolor="#1f2937"];
+    }
+
+    r1 [label="Report lift, consistency and\nsize-validity together;\nnever a single platform metric", color="#3fb950", fillcolor="#1f2937"];
+    r2 [label="Vary scrutiny over time:\ndoes the anomaly move with it?\n(adaptive actor vs noise)", color="#39c5cf", fillcolor="#0d2e2e"];
+    g  [label="Guardrail: aggregates and infrastructure only;\nno individual-level scoring", color="#f85149"];
+
+    d1 -> d2 -> d3 -> m1 -> m2 -> m3;
+    m3 -> t1; m3 -> t2; t2 -> t3;
+    t1 -> r1; t3 -> r1; r1 -> r2 [style=dashed];
+    d1 -> g [style=dashed, color="#f85149", arrowhead=none];
+}

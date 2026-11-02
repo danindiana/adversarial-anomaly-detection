@@ -1,0 +1,55 @@
+digraph architecture {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.35, ranksep=0.55,
+           label="Repository architecture: research packages, verifiers and applications\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    user [label="setup.sh\none command: clone, .venv, install, verify", color="#39c5cf", fillcolor="#0d2e2e"];
+
+    subgraph cluster_framework {
+        label="framework/  (v1.0.0 → v1.3.6, tagged)"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        f133 [label="verify_models_v1_3_3.py\nMonte Carlo Stackelberg game\n(signal, reach, level/spread/mixed attacks)", color="#58a6ff", fillcolor="#13294d"];
+        f134 [label="verify_reporting_v1_3_4.py\nWTP + pure-policy frontier", color="#58a6ff", fillcolor="#13294d"];
+        f135 [label="verify_models_v1_3_5.py\nexact mixed-policy frontier (LP)", color="#58a6ff", fillcolor="#13294d"];
+        jsr  [label="joint_strategy_results_v1_3_3.csv\ncanonical payoff table", color="#3fb950", fillcolor="#1f2937"];
+        f133 -> jsr; jsr -> f134; jsr -> f135;
+    }
+
+    subgraph cluster_cov {
+        label="covariance/  (v1.4.0 → v1.4.2, tagged)"; style="rounded"; color="#bc8cff"; fontcolor="#bc8cff";
+        p142 [label="verify_protected_v1_4_2.py\nknown-Σ analytic benchmark\nnoncentral χ², Cholesky MC checks", color="#bc8cff", fillcolor="#13294d"];
+        inv  [label="5 invariants\nreduction · common mode · null size\nanalytic = simulated · v1.3.3 regression", color="#bc8cff", fillcolor="#1f2937"];
+        p142 -> inv;
+    }
+
+    subgraph cluster_app {
+        label="adfraud/  (application)"; style="rounded"; color="#d29922"; fontcolor="#d29922";
+        ad   [label="adfraud_case_study.py\nnoise floor · attribution gap · theft detection\nholdout control · selection · Σ geometry", color="#d29922", fillcolor="#1f2937"];
+        adfig [label="figures/  (light + dark PNG)\nresults.csv · results.json", color="#d29922", fillcolor="#1f2937"];
+        ad -> adfig;
+    }
+
+    subgraph cluster_docs {
+        label="documentation"; style="rounded,dashed"; color="#8b949e"; fontcolor="#adbac7";
+        readme [label="README.md · SHOWCASE.md · CITATION.cff"];
+        docs   [label="docs/additional-reading.md\n30 annotated papers"];
+        slides [label="slides/  talk + math deck"];
+        dia    [label="diagrams/  (this set)"];
+    }
+
+    checks [label="independent-checks/\nreviewer probes that drove corrections", color="#f0883e", fillcolor="#161b22"];
+
+    user -> f133 [label=" AAD_FULL=1", color="#39c5cf", fontcolor="#39c5cf"];
+    user -> f134 [color="#39c5cf"]; user -> f135 [color="#39c5cf"];
+    user -> p142 [color="#39c5cf"]; user -> ad [color="#39c5cf"];
+    jsr -> p142 [label=" regression anchor", color="#3fb950", fontcolor="#3fb950"];
+    f135 -> p142 [label=" frontier archive", color="#3fb950", fontcolor="#3fb950", style=dashed];
+    checks -> f133 [style=dashed, color="#f0883e"]; checks -> p142 [style=dashed, color="#f0883e"];
+
+    cmp [label="byte-for-byte comparison\nregenerated vs committed tables", color="#3fb950", fillcolor="#1f2937", shape=box];
+    f134 -> cmp; f135 -> cmp; inv -> cmp; adfig -> cmp [label=" results.csv"];
+}

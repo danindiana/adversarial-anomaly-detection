@@ -1,0 +1,39 @@
+digraph adfraud_mapping {
+    graph [bgcolor="#0d1117", rankdir=LR, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.28, ranksep=1.1,
+           label="Framework concepts mapped onto advertising measurement\n(case-study numbers are synthetic, except the Gordon et al. 2023 published values)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.22,0.14",
+           fillcolor="#161b22", width=3.6];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    subgraph cluster_fw {
+        label="Framework"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        node [color="#58a6ff", fillcolor="#13294d"];
+        f1 [label="Uncalibrated background V"];
+        f2 [label="ON/OFF with a control channel"];
+        f3 [label="Contaminated control"];
+        f4 [label="Omnibus consistency test"];
+        f5 [label="Heterogeneity τ"];
+        f6 [label="Non-identifiability:\nactor controls the channel"];
+        f7 [label="Marginals vs joint Σ"];
+    }
+
+    subgraph cluster_ad {
+        label="Advertising"; style="rounded"; color="#d29922"; fontcolor="#d29922";
+        node [color="#d29922", fillcolor="#1f2937"];
+        a1 [label="Per-customer sales SD ≈ 10× mean\n(Lewis & Rao): 1.6M users for t = 3"];
+        a2 [label="Randomized holdout group"];
+        a3 [label="Vendor-chosen holdout:\n+8.8% fake lift at 25% selective slots"];
+        a4 [label="Cross-vendor excess attribution:\n8% theft at 50% detection (200k/arm)"];
+        a5 [label="Vendors target differently:\nthreshold 12–20%; ignoring it → 25–78% false alarms"];
+        a6 [label="Platform reports its own lift;\nattribution alone can't tell H0/H1/H2 apart"];
+        a7 [label="Bot clicks without visits:\nlooks easy per metric, 2.5× harder jointly"];
+    }
+
+    f1 -> a1; f2 -> a2; f3 -> a3; f4 -> a4; f5 -> a5; f6 -> a6; f7 -> a7;
+
+    pub [label="Published: non-experimental error 62–115 pts\nvs true lift 6–28% (663 Facebook RCTs)", color="#3fb950", fillcolor="#1f2937", width=4];
+    a6 -> pub [style=dashed, color="#3fb950"];
+}

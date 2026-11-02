@@ -1,0 +1,28 @@
+digraph stackelberg_game {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.4, ranksep=0.5,
+           label="Order of moves: the observer commits, the hider responds\n(attackable-calibration stage is planned for v1.4, not yet built)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    a [label="1  Observer publishes its calibration protocol\n(the random realization stays private)", color="#58a6ff", fillcolor="#13294d"];
+    b [label="2  Hider may poison calibration data\n(planned: attackable-Σ stage)", color="#f0883e", style="filled,rounded,dashed"];
+    c [label="3  Calibration subset is drawn privately; Σ̂_T is estimated", color="#58a6ff", fillcolor="#13294d"];
+    d [label="4  Observer commits to a mixed test policy\n(which tests, how many controls k)", color="#58a6ff", fillcolor="#13294d"];
+    e [label="5  Hider sees the policy, not the draw;\nchooses signal s, reach r, attack mode", color="#f0883e"];
+    f [label="6  Test is drawn and run on the data", color="#58a6ff", fillcolor="#13294d"];
+    g [label="7  Payoffs: hider benefit − detection penalty − costs\nobserver: missed detection + measurement + false alarms", color="#d29922", fillcolor="#1f2937"];
+
+    a -> b -> c -> d -> e -> f -> g;
+
+    l1 [label="Lesson: randomize which controls\n(v1.1, v1.2)", color="#3fb950", fillcolor="#1f2937"];
+    l2 [label="Lesson: randomize which tests\n(v1.3.5: −28% hider room)", color="#3fb950", fillcolor="#1f2937"];
+    l3 [label="Lesson: randomize which data calibrate\n(proposed for v1.4)", color="#bc8cff", style="filled,rounded,dashed"];
+    c -> l3 [style=dashed, color="#bc8cff"];
+    d -> l2 [style=dashed, color="#3fb950"];
+    f -> l1 [style=dashed, color="#3fb950"];
+    {rank=same; d; l2}
+}

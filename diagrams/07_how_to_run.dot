@@ -1,0 +1,32 @@
+digraph how_to_run {
+    graph [bgcolor="#0d1117", rankdir=TB, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.3, ranksep=0.55,
+           label="How to run it on Ubuntu 24.04: one command, or the same steps by hand\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22", fontname="Helvetica"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    cmd [label="curl -fsSL …/setup.sh | bash\noptions: AAD_FULL=1 · AAD_DIR · AAD_PYTHON\nAAD_SKIP_APT · AAD_SKIP_VERIFY", color="#39c5cf", fillcolor="#0d2e2e", fontname="Courier"];
+
+    subgraph cluster_steps {
+        label="What setup.sh does"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        s1 [label="1  Check system\nUbuntu 24.04, git, Python ≥ 3.11\napt-get missing git / python3-venv", color="#58a6ff", fillcolor="#13294d"];
+        s2 [label="2  Clone or update\n~/adversarial-anomaly-detection", color="#58a6ff", fillcolor="#13294d"];
+        s3 [label="3  Build .venv\nnumpy · scipy · pandas", color="#58a6ff", fillcolor="#13294d"];
+        s4 [label="4  Rerun verifiers\nv1.4.2 · v1.3.4 · v1.3.5 · adfraud\n(+ v1.3.3 Monte Carlo if AAD_FULL=1)", color="#58a6ff", fillcolor="#13294d"];
+        s5 [label="5  Compare out/*.csv with\ncommitted tables, byte for byte", color="#58a6ff", fillcolor="#13294d"];
+        s1 -> s2 -> s3 -> s4 -> s5;
+    }
+
+    pass [label="All match\n< 1 min (≈ 2 min with AAD_FULL)", color="#3fb950", fillcolor="#1f2937"];
+    fail [label="N tables differ\nusually library-version digits;\nsee README", color="#d29922", fillcolor="#1f2937"];
+
+    cmd -> s1 [color="#39c5cf"];
+    s5 -> pass [color="#3fb950"]; s5 -> fail [color="#d29922", style=dashed];
+
+    figs [label="Optional: figures\npip install -r adfraud/requirements.txt\npython adfraud/adfraud_case_study.py", color="#d29922", fillcolor="#1f2937", fontname="Courier"];
+    dots [label="Optional: diagrams\ncd diagrams && ./render.sh", color="#bc8cff", fillcolor="#1f2937", fontname="Courier"];
+    pass -> figs [style=dashed]; pass -> dots [style=dashed];
+}

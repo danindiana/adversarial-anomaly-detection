@@ -1,0 +1,55 @@
+digraph hypotheses {
+    graph [bgcolor="#0d1117", rankdir=TB, newrank=true, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.3, ranksep=0.7,
+           label="Hypotheses: the thought experiment and its advertising counterpart\n(stipulated premises, not evidence; nothing here asserts that a hidden population exists)\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    P [shape=plain, style="", margin=0, label=<
+      <TABLE BORDER="2" COLOR="#bc8cff" CELLBORDER="2" CELLSPACING="10" CELLPADDING="10" STYLE="ROUNDED,DASHED" BGCOLOR="#0d1117">
+        <TR><TD COLSPAN="4" BORDER="0"><FONT COLOR="#bc8cff" POINT-SIZE="16">Four stipulated premises (thought experiment)</FONT></TD></TR>
+        <TR>
+          <TD PORT="p1" COLOR="#30363d" BGCOLOR="#161b22" STYLE="ROUNDED">1  Present throughout<BR/>human evolution</TD>
+          <TD PORT="p2" COLOR="#30363d" BGCOLOR="#161b22" STYLE="ROUNDED">2  Embedded in stealth,<BR/>indistinguishable from humans</TD>
+          <TD PORT="p3" COLOR="#30363d" BGCOLOR="#161b22" STYLE="ROUNDED">3  Prime directive:<BR/>no steering of human affairs</TD>
+          <TD PORT="p4" COLOR="#30363d" BGCOLOR="#161b22" STYLE="ROUNDED">4  Indifferent except to<BR/>planet-scale risks</TD>
+        </TR>
+      </TABLE>>];
+
+    subgraph cluster_vars {
+        label="Three separate variables"; style="rounded"; color="#39c5cf"; fontcolor="#39c5cf";
+        N [label="Presence  N(t)", color="#39c5cf", fillcolor="#0d2e2e"];
+        d [label="Detectability  d(t)\n(a choice of the hider)", color="#39c5cf", fillcolor="#0d2e2e"];
+        q [label="Intervention  q(r)\nthreshold policy", color="#39c5cf", fillcolor="#0d2e2e"];
+        {rank=same; N -> d -> q [style=invis];}
+    }
+
+    subgraph cluster_models {
+        label="Competing models"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        H0 [label="H0  Null\nordinary processes suffice", color="#3fb950", fillcolor="#1f2937"];
+        HW [label="HW  Warden\npreserves an evolutionary system", color="#58a6ff", fillcolor="#13294d"];
+        HC [label="HC  Cohabitant\nprotects its own interests", color="#58a6ff", fillcolor="#13294d"];
+        HM [label="HM  Monitor\nan operational role,\nnot a motive", color="#58a6ff", fillcolor="#13294d", style="filled,rounded,dashed"];
+    }
+
+    subgraph cluster_ads {
+        label="Advertising counterpart (real, testable)"; style="rounded"; color="#d29922"; fontcolor="#d29922";
+        A0 [label="H0  Ads have little\nincremental effect", color="#d29922", fillcolor="#1f2937"];
+        A1 [label="H1  Ads cause downstream\nsales and margin", color="#d29922", fillcolor="#1f2937"];
+        A2 [label="H2  Strong measurement-channel\nactivity, weak economic effect", color="#f0883e", fillcolor="#161b22"];
+    }
+
+    test [label="Only discriminating evidence:\ndirectly verified mechanisms or\ncalibrated multichannel residuals,\nnot survival or raw report counts", color="#f85149", fillcolor="#161b22"];
+
+    P:p1:s -> N; P:p2:s -> d; P:p3:s -> q; P:p4:s -> q;
+    N -> H0; N -> HW; N -> HC;
+    d -> HM [style=dashed];
+    q -> HW [label=" high threshold", color="#58a6ff", fontcolor="#58a6ff"];
+    q -> HC [label=" low threshold", color="#58a6ff", fontcolor="#58a6ff"];
+    HM -> HW [style=dashed, arrowhead=none]; HM -> HC [style=dashed, arrowhead=none];
+    H0 -> test; HW -> test; HC -> test;
+    A0 -> test [color="#d29922"]; A1 -> test [color="#d29922"]; A2 -> test [color="#d29922"];
+}

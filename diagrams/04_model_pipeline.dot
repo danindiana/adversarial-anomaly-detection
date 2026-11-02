@@ -1,0 +1,45 @@
+digraph model_pipeline {
+    graph [bgcolor="#0d1117", rankdir=LR, fontname="Helvetica",
+           fontcolor="#e6edf3", labelloc="t", fontsize=20, nodesep=0.3, ranksep=0.6,
+           label="Mathematical pipeline: from background noise to concealment capacity\n"];
+    node  [fontname="Helvetica", fontcolor="#e6edf3", color="#30363d",
+           style="filled,rounded", shape=box, penwidth=2, margin="0.25,0.18",
+           fillcolor="#161b22"];
+    edge  [color="#8b949e", fontname="Helvetica", fontcolor="#adbac7",
+           penwidth=1.6, arrowsize=0.9];
+
+    subgraph cluster_bg {
+        label="Background"; style="rounded"; color="#3fb950"; fontcolor="#3fb950";
+        B   [label="Background rate B\nGamma prior → negative binomial", color="#3fb950", fillcolor="#1f2937"];
+        tau [label="Between-channel\nheterogeneity τ²", color="#3fb950", fillcolor="#1f2937"];
+        Sig [label="Joint covariance Σ\nρ common mode, cluster size c", color="#3fb950", fillcolor="#1f2937"];
+    }
+
+    subgraph cluster_hider {
+        label="Hider (follower)"; style="rounded"; color="#f0883e"; fontcolor="#f0883e";
+        s  [label="Signal s = N·d", color="#f0883e"];
+        r  [label="Reach r of m controls\nlevel / spread / mixed", color="#f0883e"];
+        u  [label="Footprint direction u ∈ U\n(physically feasible set)", color="#f0883e"];
+    }
+
+    subgraph cluster_obs {
+        label="Observer (leader)"; style="rounded"; color="#58a6ff"; fontcolor="#58a6ff";
+        k   [label="k controls measured\nprivate random selection", color="#58a6ff", fillcolor="#13294d"];
+        tst [label="Tests: directional z,\nomnibus χ² (Mahalanobis),\nBonferroni combined", color="#58a6ff", fillcolor="#13294d"];
+        cal [label="Calibration: empirical SD / MAD,\nprotected scale, physics", color="#58a6ff", fillcolor="#13294d"];
+    }
+
+    subgraph cluster_res {
+        label="Results"; style="rounded"; color="#d29922"; fontcolor="#d29922";
+        cf  [label="s* = √(κV),  KL* = κ/2", color="#d29922", fillcolor="#1f2937"];
+        lam [label="λ = s² uᵀΣ⁻¹u\nnoncentral χ² power", color="#d29922", fillcolor="#1f2937"];
+        lp  [label="Mixed-policy frontier (LP)\nU_plain vs WTP vs E[k]", color="#d29922", fillcolor="#1f2937"];
+        C   [label="C* = max over u in U, |u| = 1,\nof 1/√(uᵀΣ⁻¹u)\n= √λ_max(Σ) if U unrestricted", color="#d29922", fillcolor="#1f2937", penwidth=3];
+    }
+
+    B -> s; tau -> tst; Sig -> lam; Sig -> C;
+    s -> cf; B -> cf [label=" V"];
+    s -> lam; u -> lam; u -> C;
+    r -> tst; k -> tst; cal -> tst;
+    tst -> lp; lam -> lp; cf -> C [style=dashed];
+}

@@ -125,6 +125,7 @@ SHOWCASE.md           Live-demo framing and collaboration asks
 assets/logo.svg       Project logo
 setup.sh              One-shot setup and verification script (Ubuntu 24.04)
 docs/                 Annotated additional reading
+diagrams/             Graphviz diagrams (.dot, .png, .svg): architecture, hypotheses, how-to, roadmap
 slides/               Showcase talk and math deck (PDF/PPTX)
 CITATION.cff          How to cite this repository
 ```
