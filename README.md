@@ -105,6 +105,7 @@ independent-checks/   Scripts used to independently re-run and probe each releas
 SHOWCASE.md           Live-demo framing and collaboration asks
 assets/logo.svg       Project logo
 setup.sh              One-shot setup and verification script (Ubuntu 24.04)
+docs/                 Annotated additional reading
 CITATION.cff          How to cite this repository
 ```
 
@@ -197,6 +198,8 @@ The framework is meant for aggregate, infrastructure-level analysis. Applied to 
 - Direction, relay between the two systems, and decisions about what held up: Benjamin W. Denio.
 
 ## References
+
+For 30 annotated papers across adversarial ML, robust statistics, multichannel detection, information hiding, sensor fusion and imperfect detection, see [docs/additional-reading.md](docs/additional-reading.md).
 
 - Cachin, C. (1998). An information-theoretic model for steganography. *Information Hiding*, LNCS 1525.
 - Ćirković, M. M., Sandberg, A., & Bostrom, N. (2010). Anthropic shadow. *Risk Analysis* 30(10).
