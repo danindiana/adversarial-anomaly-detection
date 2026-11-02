@@ -1,0 +1,4 @@
+case,attack_cost_fraction,attack_cost_nats_equivalent,leader_prob_A,follower_action,clean_information_nats,leader_expected_profile_KL_nats,follower_loss
+zero_cost,0.0,0.0,0.5,attack_A,9.901151870378122,4.950575935189061,4.950575935189061
+quarter_information,0.25,2.4752879675945305,0.5,attack_A,9.901151870378122,4.950575935189061,7.4258639027835915
+three_quarter_information,0.75,7.4258639027835915,0.5,none,9.901151870378122,9.901151870378122,9.901151870378122
