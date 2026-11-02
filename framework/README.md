@@ -1,23 +1,16 @@
-# Persistent Nonhuman Cohabitation — v1.1.0
+# Nonhuman Cohabitation / Adversarial Detection Research — v1.2.0
 
-A **hypothetical** model-comparison research package, not evidence of nonhuman presence.
+This is an abstract, synthetic statistical-methods experiment motivated by a *hypothetical* population; it is **not** observational evidence of nonhuman residence.
 
-## Contents
-
-- `Cohabitation_Adversarial_Detection_v1.1.0.md`: consolidated research note, including new v1.1 sections.
-- `CHANGELOG_v1.1.0.md`: new derivations, model assumptions, and results.
-- `verify_models.py`: unchanged v1.0 deterministic reproduction.
-- `verify_models_v1_1.py`: v1.1 closed forms, cost sensitivity, and toy Stackelberg game.
-- `results.json`, `adversarial_results.csv`: unchanged baseline outputs.
-- `results_v1_1.json`, `cost_sensitivity.csv`, `stackelberg_results.csv`: v1.1 outputs.
-- `requirements.txt`: NumPy and SciPy dependencies.
-
-## Reproduction
+## Run
 
 ```bash
 python -m pip install -r requirements.txt
-python verify_models.py --output-dir .
-python verify_models_v1_1.py --output-dir .
+python verify_models_v1_2.py --output-dir .
 ```
 
-All assumptions and observations are illustrative, not empirical observations of extraterrestrial residents. The reference selection is assumed private from the adversary until its action is committed, and the adversary can fully contaminate only one of the two controls.
+The script writes four reproducible outputs and checks the analytical coverage identities, exact profile-Poisson KL comparisons, heterogeneity-calibration failure, and resource-game equilibrium constraints. The historical v1.0 and v1.1 scripts and notes remain in `legacy/` as frozen references, without the previous 250 KB strategy grid.
+
+The main note is `Cohabitation_Adversarial_Detection_v1.2.0.md`. The game optimizes an **omnibus miss probability**, not expected KL; a separate contrast likelihood ratio illustrates how an incorrectly restricted alternative creates confident false reassurance.
+
+The default leader/follower game assumes eight exchangeable controls, a hider with a hard reach budget of four, uniformly private selection of observed controls, persistent independent normal between-control offsets, and a cost of 0.002 in incentive units to enforce strict follower response. All numerical costs and population/attack variables are model inputs and must not be mistaken for real-world calibrations.
