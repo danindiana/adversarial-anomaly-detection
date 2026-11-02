@@ -1,73 +1,73 @@
 tau,k,estimator,best_uncontaminated_signal,best_uncontaminated_utility,best_contaminated_signal,best_contaminated_reach,best_contaminated_mode,best_contaminated_delta,best_contaminated_utility_zero_cost,willingness_to_pay_total,willingness_to_pay_per_reached_control,willingness_to_pay_positive,size_valid,contaminated_signal_hits_grid_ceiling,wtp_interpretation
-0,4,empirical_std,6.5,0.194309321236,30,4,level,0,0.709737173073,0.515427851838,0.128856962959,0.515427851838,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-0,4,empirical_mad,10,0.267663716692,30,4,mixed,10,0.646737173073,0.379073456382,0.0947683640954,0.379073456382,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-0,4,protected_scale,3.5,0.10311872179,8,4,level,0,0.2173155847,0.114196862911,0.0285492157277,0.114196862911,True,False,interior/grid-not-binding at reported optimum
-0,4,physics_only,3.5,0.10311872179,8,4,level,0,0.2173155847,0.114196862911,0.0285492157277,0.114196862911,True,False,interior/grid-not-binding at reported optimum
-0,4,omnibus_protected,6,0.202437661443,4.5,2,level,0,0.173483745417,-0.0289539160259,-0.014476958013,0,True,False,interior/grid-not-binding at reported optimum
-0,4,combined_protected,4,0.135527433383,5,4,level,0,0.178605934844,0.0430785014609,0.0107696253652,0.0430785014609,True,False,interior/grid-not-binding at reported optimum
-0,4,omnibus_physics,6,0.202437661443,4.5,2,level,0,0.173483745417,-0.0289539160259,-0.014476958013,0,True,False,interior/grid-not-binding at reported optimum
-0,4,combined_physics,4,0.135527433383,5,4,level,0,0.178605934844,0.0430785014609,0.0107696253652,0.0430785014609,True,False,interior/grid-not-binding at reported optimum
-0,6,empirical_std,5,0.149005934844,30,4,level,0,0.725437173073,0.576431238229,0.144107809557,0.576431238229,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-0,6,empirical_mad,7,0.19997558638,30,4,mixed,10,0.655137173073,0.455161586694,0.113790396673,0.455161586694,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-0,6,protected_scale,3.5,0.0982187217895,7.5,4,level,0,0.223294065156,0.125075343366,0.0312688358416,0.125075343366,True,False,interior/grid-not-binding at reported optimum
-0,6,physics_only,3.5,0.0982187217895,7.5,4,level,0,0.223294065156,0.125075343366,0.0312688358416,0.125075343366,True,False,interior/grid-not-binding at reported optimum
-0,6,omnibus_protected,6,0.215537661443,4.5,2,level,0,0.161183745417,-0.0543539160259,-0.027176958013,0,True,False,interior/grid-not-binding at reported optimum
-0,6,combined_protected,3.5,0.12991872179,4.5,4,level,0,0.162083745417,0.0321650236275,0.00804125590688,0.0321650236275,True,False,interior/grid-not-binding at reported optimum
-0,6,omnibus_physics,6,0.215537661443,4.5,2,level,0,0.161183745417,-0.0543539160259,-0.027176958013,0,True,False,interior/grid-not-binding at reported optimum
-0,6,combined_physics,3.5,0.12991872179,4.5,4,level,0,0.162083745417,0.0321650236275,0.00804125590688,0.0321650236275,True,False,interior/grid-not-binding at reported optimum
-0,8,empirical_std,4,0.132027433383,30,2,level,0,0.725437173073,0.59340973969,0.296704869845,0.59340973969,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-0,8,empirical_mad,5.5,0.173094954921,30,4,level,0,0.725437173073,0.552342218152,0.138085554538,0.552342218152,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-0,8,protected_scale,3,0.0948178045321,8,4,level,0,0.2275155847,0.132697780168,0.033174445042,0.132697780168,True,False,interior/grid-not-binding at reported optimum
-0,8,physics_only,3,0.0948178045321,8,4,level,0,0.2275155847,0.132697780168,0.033174445042,0.132697780168,True,False,interior/grid-not-binding at reported optimum
-0,8,omnibus_protected,6,0.226937661443,3.5,2,level,0,0.14741872179,-0.0795189396535,-0.0397594698267,0,True,False,interior/grid-not-binding at reported optimum
-0,8,combined_protected,3.5,0.12541872179,4,4,level,0,0.149227433383,0.0238087115937,0.00595217789842,0.0238087115937,True,False,interior/grid-not-binding at reported optimum
-0,8,omnibus_physics,6,0.226937661443,3.5,2,level,0,0.14741872179,-0.0795189396535,-0.0397594698267,0,True,False,interior/grid-not-binding at reported optimum
-0,8,combined_physics,3.5,0.12541872179,4,4,level,0,0.149227433383,0.0238087115937,0.00595217789842,0.0238087115937,True,False,interior/grid-not-binding at reported optimum
-3,4,empirical_std,10,0.266663716692,30,4,level,0,0.713237173073,0.446573456382,0.111643364095,0.446573456382,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-3,4,empirical_mad,15,0.347011869688,30,4,mixed,10,0.677837173073,0.330825303385,0.0827063258463,0.330825303385,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-3,4,protected_scale,4.5,0.156983745417,10,4,level,0,0.292663716692,0.135679971275,0.0339199928186,0.135679971275,True,False,interior/grid-not-binding at reported optimum
-3,4,physics_only,3,0.0276178045321,8,4,level,0,0.1518155847,0.124197780168,0.031049445042,0.124197780168,False,False,size-invalid; exclude from design comparison
-3,4,omnibus_protected,8,0.2707155847,7,4,level,0,0.23517558638,-0.0355399983206,-0.00888499958015,0,True,False,interior/grid-not-binding at reported optimum
-3,4,combined_protected,5.5,0.194594954921,7.5,4,level,0,0.243194065156,0.0485991102351,0.0121497775588,0.0485991102351,True,False,interior/grid-not-binding at reported optimum
-3,4,omnibus_physics,4.5,0.0183837454171,3.5,4,level,0,-0.00928127821048,-0.0276650236275,-0.00691625590688,0,False,False,size-invalid; exclude from design comparison
-3,4,combined_physics,0,0,4,4,level,0,0.0103274333832,0.0103274333832,0.0025818583458,0.0103274333832,False,False,size-invalid; exclude from design comparison
-3,6,empirical_std,7.5,0.214894065156,30,4,level,0,0.725437173073,0.510543107917,0.127635776979,0.510543107917,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-3,6,empirical_mad,10,0.270563716692,30,4,level,0,0.694337173073,0.423773456382,0.105943364095,0.423773456382,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-3,6,protected_scale,5,0.155405934844,12.5,4,level,0,0.299531238229,0.144125303385,0.0360313258463,0.144125303385,True,False,interior/grid-not-binding at reported optimum
-3,6,physics_only,3,0.0278178045321,7.5,4,level,0,0.151894065156,0.124076260624,0.031019065156,0.124076260624,False,False,size-invalid; exclude from design comparison
-3,6,omnibus_protected,8.5,0.285385215231,6.5,2,level,0,0.220609321236,-0.0647758939949,-0.0323879469975,0,True,False,interior/grid-not-binding at reported optimum
-3,6,combined_protected,6,0.189137661443,6.5,4,level,0,0.227209321236,0.0380716597928,0.0095179149482,0.0380716597928,True,False,interior/grid-not-binding at reported optimum
-3,6,omnibus_physics,0,0,3,2,level,0,-0.0734821954679,-0.0734821954679,-0.0367410977339,0,False,False,size-invalid; exclude from design comparison
-3,6,combined_physics,0,0,3,4,level,0,-0.0464821954679,-0.0464821954679,-0.011620548867,0,False,False,size-invalid; exclude from design comparison
-3,8,empirical_std,6.5,0.194609321236,30,2,mixed,20,0.725437173073,0.530827851838,0.265413925919,0.530827851838,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-3,8,empirical_mad,8,0.2453155847,30,4,level,0,0.725437173073,0.480121588373,0.120030397093,0.480121588373,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-3,8,protected_scale,5,0.150705934844,10,4,level,0,0.301863716692,0.151157781848,0.0377894454619,0.151157781848,True,False,interior/grid-not-binding at reported optimum
-3,8,physics_only,3,0.0261178045321,8,4,level,0,0.1495155847,0.123397780168,0.030849445042,0.123397780168,False,False,size-invalid; exclude from design comparison
-3,8,omnibus_protected,9,0.297043107917,6,2,level,0,0.206637661443,-0.0904054464743,-0.0452027232372,0,True,False,interior/grid-not-binding at reported optimum
-3,8,combined_protected,6,0.184237661443,6,4,level,0,0.211237661443,0.027,0.00675,0.027,True,False,interior/grid-not-binding at reported optimum
-3,8,omnibus_physics,0,0,2.5,2,level,0,-0.129342218152,-0.129342218152,-0.0646711090762,0,False,False,size-invalid; exclude from design comparison
-3,8,combined_physics,0,0,2.5,4,level,0,-0.0968422181524,-0.0968422181524,-0.0242105545381,0,False,False,size-invalid; exclude from design comparison
-10,4,empirical_std,25,0.513169651536,30,4,level,0,0.717737173073,0.204567521538,0.0511418803844,0.204567521538,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,4,empirical_mad,30,0.596737173073,30,4,level,0,0.711837173073,0.1151,0.028775,0.1151,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,4,protected_scale,15,0.373011869688,30,4,level,0,0.555837173073,0.182825303385,0.0457063258463,0.182825303385,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,4,physics_only,0,0,20,4,mixed,20,0.051,0.051,0.01275,0.051,False,False,size-invalid; exclude from design comparison
-10,4,omnibus_protected,20,0.5099,20,2,spread,10,0.4727,-0.0372,-0.0186,0,True,False,interior/grid-not-binding at reported optimum
-10,4,combined_protected,15,0.416211869688,20,4,level,0,0.4798,0.0635881303119,0.015897032578,0.0635881303119,True,False,interior/grid-not-binding at reported optimum
-10,4,omnibus_physics,0,0,30,2,spread,10,-0.267962826927,-0.267962826927,-0.133981413463,0,False,True,size-invalid; exclude from design comparison
-10,4,combined_physics,0,0,30,2,spread,10,-0.267962826927,-0.267962826927,-0.133981413463,0,False,True,size-invalid; exclude from design comparison
-10,6,empirical_std,20,0.4414,30,4,level,0,0.722837173073,0.281437173073,0.0703592932683,0.281437173073,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,6,empirical_mad,30,0.525137173073,30,4,level,0,0.717737173073,0.1926,0.04815,0.1926,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,6,protected_scale,15,0.359311869688,30,4,level,0,0.557937173073,0.198625303385,0.0496563258463,0.198625303385,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,6,physics_only,0,0,20,4,mixed,20,0.029,0.029,0.00725,0.029,False,False,size-invalid; exclude from design comparison
-10,6,omnibus_protected,25,0.525669651536,20,2,spread,10,0.4724,-0.0532696515356,-0.0266348257678,0,True,False,interior/grid-not-binding at reported optimum
-10,6,combined_protected,15,0.404411869688,15,4,level,0,0.442011869688,0.0376,0.0094,0.0376,True,False,interior/grid-not-binding at reported optimum
-10,6,omnibus_physics,0,0,30,2,spread,10,-0.273262826927,-0.273262826927,-0.136631413463,0,False,True,size-invalid; exclude from design comparison
-10,6,combined_physics,0,0,30,2,spread,10,-0.272962826927,-0.272962826927,-0.136481413463,0,False,True,size-invalid; exclude from design comparison
-10,8,empirical_std,15,0.410011869688,30,4,mixed,20,0.725337173073,0.315325303385,0.0788313258463,0.315325303385,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,8,empirical_mad,25,0.481569651536,30,4,level,0,0.723337173073,0.241767521538,0.0604418803844,0.241767521538,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,8,protected_scale,12.5,0.356431238229,30,4,level,0,0.562437173073,0.206005934844,0.051501483711,0.206005934844,True,True,lower bound: contaminated optimum hits signal-grid ceiling
-10,8,physics_only,0,0,15,4,level,0,0.0212118696881,0.0212118696881,0.00530296742202,0.0212118696881,False,False,size-invalid; exclude from design comparison
-10,8,omnibus_protected,25,0.542669651536,20,2,spread,10,0.4746,-0.0680696515356,-0.0340348257678,0,True,False,interior/grid-not-binding at reported optimum
-10,8,combined_protected,15,0.403111869688,15,4,level,0,0.426211869688,0.0231,0.005775,0.0231,True,False,interior/grid-not-binding at reported optimum
-10,8,omnibus_physics,0,0,30,2,spread,10,-0.274162826927,-0.274162826927,-0.137081413463,0,False,True,size-invalid; exclude from design comparison
-10,8,combined_physics,0,0,30,2,spread,10,-0.273862826927,-0.273862826927,-0.136931413463,0,False,True,size-invalid; exclude from design comparison
+0,4,empirical_std,6.5,0.1943093212357919,30.0,4,level,0,0.7097371730733005,0.5154278518375086,0.12885696295937715,0.5154278518375086,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+0,4,empirical_mad,10.0,0.26766371669159117,30.0,4,mixed,10,0.6467371730733006,0.3790734563817094,0.09476836409542735,0.3790734563817094,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+0,4,protected_scale,3.5,0.10311872178951692,8.0,4,level,0,0.2173155847002494,0.11419686291073247,0.028549215727683118,0.11419686291073247,True,False,interior/grid-not-binding at reported optimum
+0,4,physics_only,3.5,0.10311872178951692,8.0,4,level,0,0.2173155847002494,0.11419686291073247,0.028549215727683118,0.11419686291073247,True,False,interior/grid-not-binding at reported optimum
+0,4,omnibus_protected,6.0,0.20243766144298683,4.5,2,level,0,0.1734837454170545,-0.028953916025932336,-0.014476958012966168,0.0,True,False,interior/grid-not-binding at reported optimum
+0,4,combined_protected,4.0,0.1355274333831824,5.0,4,level,0,0.17860593484403586,0.04307850146085346,0.010769625365213364,0.04307850146085346,True,False,interior/grid-not-binding at reported optimum
+0,4,omnibus_physics,6.0,0.20243766144298683,4.5,2,level,0,0.1734837454170545,-0.028953916025932336,-0.014476958012966168,0.0,True,False,interior/grid-not-binding at reported optimum
+0,4,combined_physics,4.0,0.1355274333831824,5.0,4,level,0,0.17860593484403586,0.04307850146085346,0.010769625365213364,0.04307850146085346,True,False,interior/grid-not-binding at reported optimum
+0,6,empirical_std,5.0,0.14900593484403585,30.0,4,level,0,0.7254371730733006,0.5764312382292647,0.14410780955731617,0.5764312382292647,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+0,6,empirical_mad,7.0,0.19997558637966278,30.0,4,mixed,10,0.6551371730733005,0.45516158669363777,0.11379039667340944,0.45516158669363777,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+0,6,protected_scale,3.5,0.09821872178951693,7.5,4,level,0,0.22329406515596423,0.1250753433664473,0.031268835841611824,0.1250753433664473,True,False,interior/grid-not-binding at reported optimum
+0,6,physics_only,3.5,0.09821872178951693,7.5,4,level,0,0.22329406515596423,0.1250753433664473,0.031268835841611824,0.1250753433664473,True,False,interior/grid-not-binding at reported optimum
+0,6,omnibus_protected,6.0,0.21553766144298683,4.5,2,level,0,0.1611837454170545,-0.05435391602593234,-0.02717695801296617,0.0,True,False,interior/grid-not-binding at reported optimum
+0,6,combined_protected,3.5,0.1299187217895169,4.5,4,level,0,0.1620837454170545,0.03216502362753759,0.008041255906884398,0.03216502362753759,True,False,interior/grid-not-binding at reported optimum
+0,6,omnibus_physics,6.0,0.21553766144298683,4.5,2,level,0,0.1611837454170545,-0.05435391602593234,-0.02717695801296617,0.0,True,False,interior/grid-not-binding at reported optimum
+0,6,combined_physics,3.5,0.1299187217895169,4.5,4,level,0,0.1620837454170545,0.03216502362753759,0.008041255906884398,0.03216502362753759,True,False,interior/grid-not-binding at reported optimum
+0,8,empirical_std,4.0,0.1320274333831824,30.0,2,level,0,0.7254371730733006,0.5934097396901181,0.29670486984505906,0.5934097396901181,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+0,8,empirical_mad,5.5,0.17309495492085591,30.0,4,level,0,0.7254371730733006,0.5523422181524447,0.13808555453811117,0.5523422181524447,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+0,8,protected_scale,3.0,0.0948178045321075,8.0,4,level,0,0.22751558470024938,0.13269778016814188,0.03317444504203547,0.13269778016814188,True,False,interior/grid-not-binding at reported optimum
+0,8,physics_only,3.0,0.0948178045321075,8.0,4,level,0,0.22751558470024938,0.13269778016814188,0.03317444504203547,0.13269778016814188,True,False,interior/grid-not-binding at reported optimum
+0,8,omnibus_protected,6.0,0.22693766144298683,3.5,2,level,0,0.14741872178951693,-0.0795189396534699,-0.03975946982673495,0.0,True,False,interior/grid-not-binding at reported optimum
+0,8,combined_protected,3.5,0.1254187217895169,4.0,4,level,0,0.1492274333831824,0.023808711593665488,0.005952177898416372,0.023808711593665488,True,False,interior/grid-not-binding at reported optimum
+0,8,omnibus_physics,6.0,0.22693766144298683,3.5,2,level,0,0.14741872178951693,-0.0795189396534699,-0.03975946982673495,0.0,True,False,interior/grid-not-binding at reported optimum
+0,8,combined_physics,3.5,0.1254187217895169,4.0,4,level,0,0.1492274333831824,0.023808711593665488,0.005952177898416372,0.023808711593665488,True,False,interior/grid-not-binding at reported optimum
+3,4,empirical_std,10.0,0.26666371669159117,30.0,4,level,0,0.7132371730733006,0.4465734563817094,0.11164336409542736,0.4465734563817094,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+3,4,empirical_mad,15.0,0.3470118696880717,30.0,4,mixed,10,0.6778371730733006,0.3308253033852289,0.08270632584630723,0.3308253033852289,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+3,4,protected_scale,4.5,0.1569837454170545,10.0,4,level,0,0.29266371669159114,0.13567997127453663,0.033919992818634156,0.13567997127453663,True,False,interior/grid-not-binding at reported optimum
+3,4,physics_only,3.0,0.027617804532107493,8.0,4,level,0,0.1518155847002494,0.1241977801681419,0.031049445042035474,0.1241977801681419,False,False,size-invalid; exclude from design comparison
+3,4,omnibus_protected,8.0,0.27071558470024937,7.0,4,level,0,0.2351755863796628,-0.035539998320586574,-0.008884999580146644,0.0,True,False,interior/grid-not-binding at reported optimum
+3,4,combined_protected,5.5,0.19459495492085588,7.5,4,level,0,0.24319406515596426,0.04859911023510838,0.012149777558777095,0.04859911023510838,True,False,interior/grid-not-binding at reported optimum
+3,4,omnibus_physics,4.5,0.01838374541705448,3.5,4,level,0,-0.00928127821048308,-0.02766502362753756,-0.00691625590688439,0.0,False,False,size-invalid; exclude from design comparison
+3,4,combined_physics,0.0,0.0,4.0,4,level,0,0.010327433383182372,0.010327433383182372,0.002581858345795593,0.010327433383182372,False,False,size-invalid; exclude from design comparison
+3,6,empirical_std,7.5,0.21489406515596424,30.0,4,level,0,0.7254371730733006,0.5105431079173364,0.1276357769793341,0.5105431079173364,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+3,6,empirical_mad,10.0,0.2705637166915911,30.0,4,level,0,0.6943371730733006,0.42377345638170943,0.10594336409542736,0.42377345638170943,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+3,6,protected_scale,5.0,0.15540593484403586,12.5,4,level,0,0.29953123822926475,0.1441253033852289,0.03603132584630722,0.1441253033852289,True,False,interior/grid-not-binding at reported optimum
+3,6,physics_only,3.0,0.0278178045321075,7.5,4,level,0,0.15189406515596424,0.12407626062385674,0.031019065155964184,0.12407626062385674,False,False,size-invalid; exclude from design comparison
+3,6,omnibus_protected,8.5,0.2853852152307377,6.5,2,level,0,0.2206093212357919,-0.06477589399494577,-0.03238794699747288,0.0,True,False,interior/grid-not-binding at reported optimum
+3,6,combined_protected,6.0,0.18913766144298683,6.5,4,level,0,0.2272093212357919,0.03807165979280508,0.00951791494820127,0.03807165979280508,True,False,interior/grid-not-binding at reported optimum
+3,6,omnibus_physics,0.0,0.0,3.0,2,level,0,-0.0734821954678925,-0.0734821954678925,-0.03674109773394625,0.0,False,False,size-invalid; exclude from design comparison
+3,6,combined_physics,0.0,0.0,3.0,4,level,0,-0.046482195467892506,-0.046482195467892506,-0.011620548866973127,0.0,False,False,size-invalid; exclude from design comparison
+3,8,empirical_std,6.5,0.1946093212357919,30.0,2,mixed,20,0.7254371730733006,0.5308278518375087,0.26541392591875435,0.5308278518375087,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+3,8,empirical_mad,8.0,0.2453155847002494,30.0,4,level,0,0.7254371730733006,0.4801215883730512,0.1200303970932628,0.4801215883730512,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+3,8,protected_scale,5.0,0.15070593484403583,10.0,4,level,0,0.3018637166915911,0.1511577818475553,0.037789445461888824,0.1511577818475553,True,False,interior/grid-not-binding at reported optimum
+3,8,physics_only,3.0,0.02611780453210749,8.0,4,level,0,0.1495155847002494,0.1233977801681419,0.030849445042035475,0.1233977801681419,False,False,size-invalid; exclude from design comparison
+3,8,omnibus_protected,9.0,0.2970431079173364,6.0,2,level,0,0.20663766144298684,-0.09040544647434956,-0.04520272323717478,0.0,True,False,interior/grid-not-binding at reported optimum
+3,8,combined_protected,6.0,0.1842376614429868,6.0,4,level,0,0.21123766144298683,0.027000000000000024,0.006750000000000006,0.027000000000000024,True,False,interior/grid-not-binding at reported optimum
+3,8,omnibus_physics,0.0,0.0,2.5,2,level,0,-0.12934221815244468,-0.12934221815244468,-0.06467110907622234,0.0,False,False,size-invalid; exclude from design comparison
+3,8,combined_physics,0.0,0.0,2.5,4,level,0,-0.09684221815244465,-0.09684221815244465,-0.024210554538111162,0.0,False,False,size-invalid; exclude from design comparison
+10,4,empirical_std,25.0,0.513169651535627,30.0,4,level,0,0.7177371730733005,0.20456752153767355,0.05114188038441839,0.20456752153767355,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,4,empirical_mad,30.0,0.5967371730733005,30.0,4,level,0,0.7118371730733006,0.11510000000000009,0.028775000000000023,0.11510000000000009,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,4,protected_scale,15.0,0.37301186968807165,30.0,4,level,0,0.5558371730733006,0.18282530338522895,0.04570632584630724,0.18282530338522895,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,4,physics_only,0.0,0.0,20.0,4,mixed,20,0.050999999999999934,0.050999999999999934,0.012749999999999984,0.050999999999999934,False,False,size-invalid; exclude from design comparison
+10,4,omnibus_protected,20.0,0.5099,20.0,2,spread,10,0.4727,-0.03720000000000001,-0.018600000000000005,0.0,True,False,interior/grid-not-binding at reported optimum
+10,4,combined_protected,15.0,0.41621186968807167,20.0,4,level,0,0.4798,0.06358813031192834,0.015897032577982084,0.06358813031192834,True,False,interior/grid-not-binding at reported optimum
+10,4,omnibus_physics,0.0,0.0,30.0,2,spread,10,-0.26796282692669937,-0.26796282692669937,-0.13398141346334969,0.0,False,True,size-invalid; exclude from design comparison
+10,4,combined_physics,0.0,0.0,30.0,2,spread,10,-0.26796282692669937,-0.26796282692669937,-0.13398141346334969,0.0,False,True,size-invalid; exclude from design comparison
+10,6,empirical_std,20.0,0.4414,30.0,4,level,0,0.7228371730733005,0.2814371730733005,0.07035929326832513,0.2814371730733005,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,6,empirical_mad,30.0,0.5251371730733005,30.0,4,level,0,0.7177371730733005,0.1926,0.04815,0.1926,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,6,protected_scale,15.0,0.3593118696880717,30.0,4,level,0,0.5579371730733006,0.19862530338522888,0.04965632584630722,0.19862530338522888,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,6,physics_only,0.0,0.0,20.0,4,mixed,20,0.029000000000000026,0.029000000000000026,0.0072500000000000064,0.029000000000000026,False,False,size-invalid; exclude from design comparison
+10,6,omnibus_protected,25.0,0.525669651535627,20.0,2,spread,10,0.4724,-0.05326965153562696,-0.02663482576781348,0.0,True,False,interior/grid-not-binding at reported optimum
+10,6,combined_protected,15.0,0.4044118696880717,15.0,4,level,0,0.4420118696880717,0.03760000000000002,0.009400000000000006,0.03760000000000002,True,False,interior/grid-not-binding at reported optimum
+10,6,omnibus_physics,0.0,0.0,30.0,2,spread,10,-0.27326282692669945,-0.27326282692669945,-0.13663141346334973,0.0,False,True,size-invalid; exclude from design comparison
+10,6,combined_physics,0.0,0.0,30.0,2,spread,10,-0.2729628269266994,-0.2729628269266994,-0.1364814134633497,0.0,False,True,size-invalid; exclude from design comparison
+10,8,empirical_std,15.0,0.4100118696880717,30.0,4,mixed,20,0.7253371730733006,0.3153253033852289,0.07883132584630723,0.3153253033852289,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,8,empirical_mad,25.0,0.4815696515356269,30.0,4,level,0,0.7233371730733006,0.24176752153767367,0.06044188038441842,0.24176752153767367,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,8,protected_scale,12.5,0.3564312382292647,30.0,4,level,0,0.5624371730733005,0.20600593484403584,0.05150148371100896,0.20600593484403584,True,True,lower bound: contaminated optimum hits signal-grid ceiling
+10,8,physics_only,0.0,0.0,15.0,4,level,0,0.021211869688071705,0.021211869688071705,0.005302967422017926,0.021211869688071705,False,False,size-invalid; exclude from design comparison
+10,8,omnibus_protected,25.0,0.542669651535627,20.0,2,spread,10,0.47459999999999997,-0.068069651535627,-0.0340348257678135,0.0,True,False,interior/grid-not-binding at reported optimum
+10,8,combined_protected,15.0,0.40311186968807167,15.0,4,level,0,0.4262118696880717,0.02310000000000001,0.005775000000000002,0.02310000000000001,True,False,interior/grid-not-binding at reported optimum
+10,8,omnibus_physics,0.0,0.0,30.0,2,spread,10,-0.27416282692669947,-0.27416282692669947,-0.13708141346334973,0.0,False,True,size-invalid; exclude from design comparison
+10,8,combined_physics,0.0,0.0,30.0,2,spread,10,-0.2738628269266994,-0.2738628269266994,-0.1369314134633497,0.0,False,True,size-invalid; exclude from design comparison
