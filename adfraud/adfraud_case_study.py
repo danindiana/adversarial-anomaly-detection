@@ -215,6 +215,81 @@ def holdout_control(rng: np.random.Generator) -> dict:
 
 
 # --------------------------------------------------------------------------- #
+# 6. Selection bias: observational vs randomized lift (design: ChatGPT)
+# --------------------------------------------------------------------------- #
+N_SEL = 400_000
+SEL_BASE_LOGIT = math.log(0.08 / 0.92)   # 8% purchase probability at average intent
+SEL_INTENT_EFFECT = 1.0                  # how strongly latent intent drives purchase
+TRUE_LIFT_PP = 0.01                      # true causal lift: +1 percentage point
+GAMMA_GRID = np.linspace(0, 2.5, 11)     # how strongly intent drives exposure (targeting)
+
+
+def _sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+
+def selection_bias(rng: np.random.Generator) -> dict:
+    intent = rng.standard_normal(N_SEL)
+    p_base = _sigmoid(SEL_BASE_LOGIT + SEL_INTENT_EFFECT * intent)
+    u_buy = rng.random(N_SEL)
+    obs, rct = [], []
+    for g in GAMMA_GRID:
+        exposed = rng.random(N_SEL) < _sigmoid(g * intent)            # targeted exposure
+        y = u_buy < np.where(exposed, p_base + TRUE_LIFT_PP, p_base)
+        obs.append(y[exposed].mean() - y[~exposed].mean())
+        assigned = rng.random(N_SEL) < 0.5                             # randomized holdout
+        y_r = u_buy < np.where(assigned, p_base + TRUE_LIFT_PP, p_base)
+        rct.append(y_r[assigned].mean() - y_r[~assigned].mean())
+    obs, rct = np.array(obs), np.array(rct)
+    assert abs(obs[0] - TRUE_LIFT_PP) < 0.004 and np.all(np.abs(rct - TRUE_LIFT_PP) < 0.004), (obs[0], rct)
+    se = math.sqrt(2 * 0.1 * 0.9 / (N_SEL / 2))
+    return {"gamma": GAMMA_GRID, "observational": obs, "randomized": rct, "rct_ci95": 1.96 * se}
+
+
+# --------------------------------------------------------------------------- #
+# 7. Covariance geometry of equal-size footprints (design: ChatGPT)
+# --------------------------------------------------------------------------- #
+CHANNELS = ["spend", "impressions", "clicks", "attributed", "visits", "revenue", "margin"]
+CHANNEL_SD = np.array([1.0, 3.0, 3.0, 2.5, 2.0, 1.0, 0.8])
+# Illustrative correlations: engagement metrics move together strongly; revenue and
+# margin move together; the two blocks are only loosely linked through visits.
+_R = np.eye(7)
+for (i, j), r in {
+    (0, 1): 0.6, (0, 2): 0.5, (0, 3): 0.4, (0, 4): 0.4, (0, 5): 0.2, (0, 6): 0.1,
+    (1, 2): 0.9, (1, 3): 0.7, (1, 4): 0.8, (1, 5): 0.3, (1, 6): 0.2,
+    (2, 3): 0.75, (2, 4): 0.85, (2, 5): 0.3, (2, 6): 0.2,
+    (3, 4): 0.7, (3, 5): 0.35, (3, 6): 0.25,
+    (4, 5): 0.5, (4, 6): 0.35,
+    (5, 6): 0.9,
+}.items():
+    _R[i, j] = _R[j, i] = r
+SIGMA_ADS = _R * np.outer(CHANNEL_SD, CHANNEL_SD)
+FOOTPRINTS = {
+    # label: raw footprint before normalizing to unit length
+    "Attribution-heavy": {"clicks": 1, "attributed": 1},
+    "Traffic-heavy": {"impressions": 1, "clicks": 1, "visits": 1},
+    "Bot traffic:\nclicks, no visits": {"impressions": 1, "clicks": 1, "visits": -0.6},
+    "Revenue-heavy": {"visits": 1, "revenue": 1},
+    "Margin-heavy": {"revenue": 1, "margin": 1},
+}
+
+
+def covariance_geometry() -> list[dict]:
+    assert np.all(np.linalg.eigvalsh(SIGMA_ADS) > 0), "Sigma must be positive definite"
+    inv = np.linalg.inv(SIGMA_ADS)
+    rows = []
+    for label, spec in FOOTPRINTS.items():
+        u = np.zeros(len(CHANNELS))
+        for ch, w in spec.items():
+            u[CHANNELS.index(ch)] = w
+        u /= np.linalg.norm(u)
+        joint = 1 / math.sqrt(float(u @ inv @ u))
+        per_metric = 1 / math.sqrt(float(np.sum((u / CHANNEL_SD) ** 2)))   # ignores correlation
+        rows.append({"footprint": label, "per_metric_capacity": per_metric, "joint_capacity": joint})
+    return rows
+
+
+# --------------------------------------------------------------------------- #
 # 5. Published comparison (not simulated)
 # --------------------------------------------------------------------------- #
 # Gordon, Moakler & Zettelmeyer (2023), "Close Enough?", Marketing Science 42(4):
@@ -257,7 +332,8 @@ def _note(fig, theme, text):
     fig.text(0.1, 0.035, text, fontsize=8.5, color=theme["ink2"], ha="left")
 
 
-def make_figures(out: Path, nf: dict, gap: list[dict], theft: dict, hold: dict) -> list[str]:
+def make_figures(out: Path, nf: dict, gap: list[dict], theft: dict, hold: dict,
+                 sel: dict, geo: list[dict]) -> list[str]:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -394,6 +470,53 @@ def make_figures(out: Path, nf: dict, gap: list[dict], theft: dict, hold: dict) 
         fig.savefig(out / f"gordon2023_observational_error-{mode}.png", facecolor=th["surface"])
         plt.close(fig)
         written.append(f"gordon2023_observational_error-{mode}.png")
+
+        # 6. Selection bias ------------------------------------------------- #
+        fig, ax = _setup(plt, th, "Targeting alone can make a small effect look huge",
+                         "Estimated purchase lift as targeting leans harder on purchase intent; true lift is fixed at 1 point")
+        g = sel["gamma"]
+        ax.axhline(100 * TRUE_LIFT_PP, color=th["ink2"], linewidth=1, linestyle=(0, (4, 3)))
+        ax.fill_between(g, 100 * (sel["randomized"] - sel["rct_ci95"]), 100 * (sel["randomized"] + sel["rct_ci95"]),
+                        color=th["band"], alpha=0.14, linewidth=0)
+        ax.plot(g, 100 * sel["observational"], color=th["orange"], linewidth=2.2, marker="o", markersize=7,
+                markeredgecolor=th["surface"], markeredgewidth=1.5)
+        ax.plot(g, 100 * sel["randomized"], color=th["blue"], linewidth=2.2, marker="o", markersize=7,
+                markeredgecolor=th["surface"], markeredgewidth=1.5)
+        ax.text(g[-1] + 0.05, 100 * sel["observational"][-1], f"Exposed vs\nunexposed\n{100 * sel['observational'][-1]:.1f} pts",
+                color=th["ink"], fontsize=9.5, va="center")
+        ax.text(g[-1] + 0.05, 100 * sel["randomized"][-1] + 0.6, f"Randomized\nholdout\n{100 * sel['randomized'][-1]:.1f} pts",
+                color=th["ink"], fontsize=9.5, va="bottom")
+        ax.text(0.05, 100 * TRUE_LIFT_PP - 0.9, "True lift: 1 point", color=th["ink2"], fontsize=9)
+        ax.set_xlim(0, g[-1])
+        ax.set_xlabel("How strongly targeting follows latent purchase intent (logit coefficient)", color=th["ink2"], fontsize=10)
+        ax.set_ylabel("Estimated lift (percentage points)", color=th["ink2"], fontsize=10)
+        _note(fig, th, "Simulated: 400k users, 8% purchase rate at average intent. Band: 95% noise of the randomized estimate. Design after ChatGPT.")
+        fig.savefig(out / f"selection_bias-{mode}.png", facecolor=th["surface"])
+        plt.close(fig)
+        written.append(f"selection_bias-{mode}.png")
+
+        # 7. Covariance geometry --------------------------------------------- #
+        fig, ax = _setup(plt, th, "Equal-size footprints are not equally easy to hide",
+                         "Concealment capacity 1/√(uᵀΣ⁻¹u) of five unit-size footprints across seven ad metrics")
+        labels = [r["footprint"] for r in geo]
+        pm = [r["per_metric_capacity"] for r in geo]
+        jt = [r["joint_capacity"] for r in geo]
+        xs = np.arange(len(labels))
+        w = 0.36
+        b1 = ax.bar(xs - w / 2 - 0.01, pm, w, color=th["blue"], label="Per-metric view (ignores correlation)")
+        b2 = ax.bar(xs + w / 2 + 0.01, jt, w, color=th["orange"], label="Joint view (full covariance)")
+        for bars, vals in ((b1, pm), (b2, jt)):
+            for bar, v in zip(bars, vals):
+                ax.text(bar.get_x() + bar.get_width() / 2, v + 0.04, f"{v:.2f}", ha="center", color=th["ink"], fontsize=9.5)
+        ax.set_xticks(xs, labels, color=th["ink"], fontsize=9.5)
+        ax.set_ylabel("Concealment capacity (higher = easier to hide)", color=th["ink2"], fontsize=10)
+        ax.set_ylim(0, max(pm + jt) * 1.25)
+        ax.grid(False, axis="x")
+        ax.legend(loc="upper right", frameon=False, fontsize=9.5, labelcolor=th["ink"])
+        _note(fig, th, "Synthetic covariance: engagement metrics highly correlated, revenue and margin correlated, blocks loosely linked. Design after ChatGPT.")
+        fig.savefig(out / f"covariance_geometry-{mode}.png", facecolor=th["surface"])
+        plt.close(fig)
+        written.append(f"covariance_geometry-{mode}.png")
     return written
 
 
@@ -410,6 +533,8 @@ def main() -> dict:
     gap = attribution_gap(np.random.default_rng(SEED))
     theft = theft_detection(np.random.default_rng(SEED + 1))
     hold = holdout_control(np.random.default_rng(SEED + 2))
+    sel = selection_bias(np.random.default_rng(SEED + 3))
+    geo = covariance_geometry()
 
     i10 = int(np.argmin(np.abs(hold["q"] - 0.10)))
     i25 = int(np.argmin(np.abs(hold["q"] - 0.25)))
@@ -432,6 +557,12 @@ def main() -> dict:
             "mean_propensity": float(hold["p_mean"]),
             "mean_propensity_vendor_low_half": float(hold["p_low_half"]),
         },
+        "selection_bias": {
+            "gamma": [float(x) for x in sel["gamma"]],
+            "observational_lift": [float(x) for x in sel["observational"]],
+            "randomized_lift": [float(x) for x in sel["randomized"]],
+        },
+        "covariance_geometry": geo,
     }
     (out / "results.json").write_text(json.dumps(summary, indent=2) + "\n")
     with (out / "results.csv").open("w", newline="") as f:
@@ -450,9 +581,16 @@ def main() -> dict:
             w.writerow(["theft_detection", f"false_alarm_if_tau_ignored_200k_tau_{tau}", round(fa, 4)])
         for k in ("fake_relative_lift_at_q10", "fake_relative_lift_at_q25", "fake_relative_lift_at_q50", "advertiser_relative_ci95"):
             w.writerow(["holdout_control", k, round(summary["holdout_control"][k], 4)])
+        for gmm, o, r in zip(sel["gamma"], sel["observational"], sel["randomized"]):
+            w.writerow(["selection_bias", f"gamma_{gmm:.2f} observational_pp", round(100 * o, 3)])
+            w.writerow(["selection_bias", f"gamma_{gmm:.2f} randomized_pp", round(100 * r, 3)])
+        for r in geo:
+            name = r["footprint"].replace("\n", " ")
+            w.writerow(["covariance_geometry", f"{name} per_metric", round(r["per_metric_capacity"], 4)])
+            w.writerow(["covariance_geometry", f"{name} joint", round(r["joint_capacity"], 4)])
 
     if not a.no_figures:
-        files = make_figures(out / "figures", nf, gap, theft, hold)
+        files = make_figures(out / "figures", nf, gap, theft, hold, sel, geo)
         print(f"wrote {len(files)} figures to {out / 'figures'}")
     print(json.dumps({"noise_floor_users_t3": round(nf["lr_users_for_t3"]),
                       "steal_share_50pct": {k: round(v, 3) for k, v in theft["share_at_50pct_power"].items()},

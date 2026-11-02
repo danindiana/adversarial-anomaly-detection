@@ -20,3 +20,35 @@ holdout_control,fake_relative_lift_at_q10,0.0366
 holdout_control,fake_relative_lift_at_q25,0.0879
 holdout_control,fake_relative_lift_at_q50,0.183
 holdout_control,advertiser_relative_ci95,0.0434
+selection_bias,gamma_0.00 observational_pp,1.015
+selection_bias,gamma_0.00 randomized_pp,0.985
+selection_bias,gamma_0.25 observational_pp,3.293
+selection_bias,gamma_0.25 randomized_pp,1.036
+selection_bias,gamma_0.50 observational_pp,5.098
+selection_bias,gamma_0.50 randomized_pp,0.924
+selection_bias,gamma_0.75 observational_pp,6.891
+selection_bias,gamma_0.75 randomized_pp,0.953
+selection_bias,gamma_1.00 observational_pp,8.192
+selection_bias,gamma_1.00 randomized_pp,0.993
+selection_bias,gamma_1.25 observational_pp,9.286
+selection_bias,gamma_1.25 randomized_pp,1.169
+selection_bias,gamma_1.50 observational_pp,10.301
+selection_bias,gamma_1.50 randomized_pp,0.792
+selection_bias,gamma_1.75 observational_pp,10.718
+selection_bias,gamma_1.75 randomized_pp,0.908
+selection_bias,gamma_2.00 observational_pp,11.293
+selection_bias,gamma_2.00 randomized_pp,0.966
+selection_bias,gamma_2.25 observational_pp,12.007
+selection_bias,gamma_2.25 randomized_pp,0.981
+selection_bias,gamma_2.50 observational_pp,12.35
+selection_bias,gamma_2.50 randomized_pp,0.938
+covariance_geometry,Attribution-heavy per_metric,2.7161
+covariance_geometry,Attribution-heavy joint,1.4639
+covariance_geometry,Traffic-heavy per_metric,2.5205
+covariance_geometry,Traffic-heavy joint,2.1931
+covariance_geometry,"Bot traffic: clicks, no visits per_metric",2.7493
+covariance_geometry,"Bot traffic: clicks, no visits joint",1.0832
+covariance_geometry,Revenue-heavy per_metric,1.2649
+covariance_geometry,Revenue-heavy joint,0.5808
+covariance_geometry,Margin-heavy per_metric,0.8835
+covariance_geometry,Margin-heavy joint,1.0334

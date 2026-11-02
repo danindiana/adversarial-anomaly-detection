@@ -4,7 +4,7 @@
 
 This section applies the project's framework to a domain where the hidden, adaptive actor is real: digital advertising. It was prompted by Don Marti's post [*So much crime, so little pay*](https://blog.zgp.org/so-much-crime-so-little-pay/) (March 2026), which argues that surveillance advertising delivers little growth to the brands paying for it while fraud and intermediaries capture the value.
 
-> **Status:** application note with a reproducible synthetic case study. One figure uses published values; the other four are synthetic, with every parameter stated. Nothing here measures any real platform, vendor or campaign. It does **not** claim that digital advertising is generally ineffective, that any company commits fraud, or that a gap between attribution and incrementality is itself proof of fraud.
+> **Status:** application note with a reproducible synthetic case study. One figure uses published values; the other six are synthetic, with every parameter stated. Nothing here measures any real platform, vendor or campaign. It does **not** claim that digital advertising is generally ineffective, that any company commits fraud, or that a gap between attribution and incrementality is itself proof of fraud.
 
 ## Why advertising fits the framework
 
@@ -34,7 +34,7 @@ Advertising measurement combines all three features the framework was built for:
 
 **Two cautions on the motivating evidence.** The slow-growth comparisons in Marti's post (large advertisers growing at roughly 2% a year against about 4.7% nominal GDP) are aggregate residuals with a huge background: industry mix, maturity, acquisitions, pricing and the macroeconomy. Advertising is also endogenous; struggling firms may advertise more *because* they are struggling. By the project's own standard that is suggestive, not causal. The decisive evidence is randomized.
 
-## Case study: five results
+## Case study: seven results
 
 All synthetic results share a 2% organic conversion rate. Figures render in light or dark to match your GitHub theme.
 
@@ -112,6 +112,30 @@ The 95% noise band at 200k users per arm is ±4.3%, so at 25% the fake lift is a
 
 Across 663 Facebook experiments, the median absolute error of non-experimental estimates (115, 107 and 62 percentage points for upper-, mid- and lower-funnel outcomes) is several times the median true lift (28%, 19% and 6%). These are published values, not a simulation.
 
+### 6. Targeting alone can make a small effect look huge
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/selection_bias-dark.png">
+  <img alt="Estimated lift vs how strongly targeting follows purchase intent. Exposed-vs-unexposed comparison rises from 1.0 to 12.3 percentage points; the randomized holdout estimate stays near the true 1 point throughout." src="figures/selection_bias-light.png">
+</picture>
+
+Why observational estimates miss (Figure 5) in one picture. Each user has a latent purchase intent; the ad adds exactly one percentage point to everyone's purchase probability. As targeting leans harder on intent, the naive exposed-vs-unexposed comparison climbs from 1.0 to **12.3 points**, because the exposed group is full of people who were going to buy anyway. The randomized holdout stays at about 1 point throughout. No fraud is involved: selection alone produces a twelvefold overstatement.
+
+### 7. Equal-size footprints are not equally easy to hide
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/covariance_geometry-dark.png">
+  <img alt="Paired bars of concealment capacity for five unit-size footprints, per-metric view vs joint covariance view. Attribution-heavy 2.72 vs 1.46; traffic-heavy 2.52 vs 2.19; bot traffic (clicks, no visits) 2.75 vs 1.08; revenue-heavy 1.26 vs 0.58; margin-heavy 0.88 vs 1.03." src="figures/covariance_geometry-light.png">
+</picture>
+
+The protected-covariance result from v1.4, on seven synthetic ad metrics (spend, impressions, clicks, attributed conversions, visits, revenue, margin). Every footprint has the same size; what differs is its direction. Concealment capacity is `1/√(uᵀΣ⁻¹u)`, and the per-metric view computes the same thing while ignoring correlations.
+
+- **Bot traffic is the clearest case.** Clicks and impressions rise but visits do not. Metric by metric it looks like the easiest thing to hide (2.75); jointly it is **2.5 times harder** (1.08), because clicks and visits normally move together and this footprint breaks that link. This is Herley's point, and the framework's: matching each metric is easy, matching how they co-vary is not.
+- **Moving with the grain is cheap.** A traffic-heavy footprint, which raises impressions, clicks and visits together the way ordinary demand does, keeps most of its cover (2.19). Margin-heavy is the one case where the joint view gives *more* cover than the per-metric view, because revenue and margin normally move together.
+- **Rankings change.** Which footprint looks easiest to hide depends on whether correlations are modeled, so a detector that checks metrics one at a time is aiming at the wrong targets.
+
+The covariance is illustrative, not estimated from real data; estimating it from protected holdout periods is the finite-`T` problem in the main project.
+
 ## A multichannel test (proposed)
 
 ChatGPT's extension, in the project's notation. Let the observable vector be
@@ -180,4 +204,4 @@ It runs in a few seconds and checks itself: it asserts that it reproduces Lewis 
 
 ## Provenance
 
-The literature review, the H0/H1/H2 framing, the multichannel test, the metric-gaming generalization and the falsifiable predictions were drafted by ChatGPT. The case-study code, figures and numbers were built by Claude, which also checked every citation against its source and corrected details (for example, the Yelp study randomized 7,209 of 18,294 restaurants, not all of them). Direction by Benjamin W. Denio.
+The literature review, the H0/H1/H2 framing, the multichannel test, the metric-gaming generalization, the falsifiable predictions and the designs of Figures 6 and 7 were drafted by ChatGPT. The case-study code, figures and numbers were built by Claude (Figures 6 and 7 rebuilt from ChatGPT's designs with stated parameters so they regenerate from the script), which also checked every citation against its source and corrected details (for example, the Yelp study randomized 7,209 of 18,294 restaurants, not all of them). Direction by Benjamin W. Denio.

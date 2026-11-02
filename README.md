@@ -98,7 +98,7 @@ If every unit direction were feasible, the easiest direction to hide in would be
 
 ## Application: advertising measurement and ad fraud
 
-Digital advertising is a domain where the hidden, adaptive actor is real. Ad effects are tiny next to ordinary sales noise, platforms often measure their own performance, and attribution can be stolen by whoever touches a customer last. [`adfraud/`](adfraud/) maps the framework onto it, reviews the experimental literature, and runs a reproducible case study with five figures.
+Digital advertising is a domain where the hidden, adaptive actor is real. Ad effects are tiny next to ordinary sales noise, platforms often measure their own performance, and attribution can be stolen by whoever touches a customer last. [`adfraud/`](adfraud/) maps the framework onto it, reviews the experimental literature, and runs a reproducible case study with seven figures.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="adfraud/figures/attribution_gap-dark.png">
