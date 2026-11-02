@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="260" viewBox="0 0 800 260" role="img" aria-label="Adversarial Anomaly Detection logo: a faint alien face in a radar scope beside a noisy signal trace with a hidden regular pattern">
+  <title>Adversarial Anomaly Detection</title>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F2A65A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#F2A65A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6FB7E8" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#6FB7E8" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="260" rx="22" fill="#0E1420"/>
+
+  <!-- radar scope -->
+  <g fill="none" stroke="#24304D" stroke-width="2">
+    <circle cx="150" cy="130" r="36"/>
+    <circle cx="150" cy="130" r="72"/>
+    <circle cx="150" cy="130" r="106"/>
+    <line x1="44" y1="130" x2="256" y2="130"/>
+    <line x1="150" y1="24" x2="150" y2="236"/>
+  </g>
+  <path d="M150,130 L246,84 A106,106 0 0 1 256,130 Z" fill="url(#sweep)"/>
+
+  <!-- background noise dots -->
+  <g fill="#2C3856">
+    <circle cx="78" cy="70" r="2.5"/><circle cx="214" cy="58" r="2"/><circle cx="96" cy="196" r="2.5"/>
+    <circle cx="226" cy="190" r="2"/><circle cx="62" cy="142" r="2"/><circle cx="238" cy="152" r="2.5"/>
+    <circle cx="120" cy="44" r="2"/><circle cx="186" cy="220" r="2"/><circle cx="70" cy="104" r="1.8"/>
+    <circle cx="200" cy="96" r="1.8"/>
+  </g>
+
+  <!-- the face hiding in the noise -->
+  <circle cx="150" cy="128" r="70" fill="url(#glow)"/>
+  <path d="M150,64 C192,64 212,98 207,132 C201,170 174,194 150,199 C126,194 99,170 93,132 C88,98 108,64 150,64 Z"
+        fill="none" stroke="#6FB7E8" stroke-width="2.5" stroke-opacity="0.8" stroke-dasharray="6 5"/>
+  <ellipse cx="127" cy="128" rx="21" ry="10" transform="rotate(28 127 128)" fill="#F2A65A"/>
+  <ellipse cx="173" cy="128" rx="21" ry="10" transform="rotate(-28 173 128)" fill="#F2A65A"/>
+
+  <!-- title -->
+  <text x="290" y="100" fill="#F3F1EA" font-family="'Space Grotesk','Segoe UI',Helvetica,Arial,sans-serif" font-size="40" font-weight="700" letter-spacing="2">ADVERSARIAL</text>
+  <text x="290" y="146" fill="#F3F1EA" font-family="'Space Grotesk','Segoe UI',Helvetica,Arial,sans-serif" font-size="40" font-weight="700" letter-spacing="2">ANOMALY DETECTION</text>
+  <text x="292" y="176" fill="#6FB7E8" font-family="'JetBrains Mono',Menlo,Consolas,monospace" font-size="17" letter-spacing="2">hiding in the noise</text>
+
+  <!-- signal trace with a hidden regular pattern -->
+  <polyline fill="none" stroke="#3A4766" stroke-width="2.5" stroke-linejoin="round"
+    points="290,212 310,203 330,221 350,207 370,216 390,199 410,225 430,210 450,204 470,219 490,201 510,213 530,193 550,229 570,194 590,228 610,195 630,213 650,220 670,204 690,216 710,202 730,223 750,208 770,214"/>
+  <polyline fill="none" stroke="#F2A65A" stroke-width="3" stroke-linejoin="round"
+    points="510,213 530,193 550,229 570,194 590,228 610,195 630,213"/>
+</svg>

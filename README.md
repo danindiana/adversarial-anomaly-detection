@@ -1,3 +1,20 @@
+<p align="center">
+  <img src="assets/logo.svg" alt="Adversarial Anomaly Detection logo: a faint alien face in a radar scope beside a noisy signal with a hidden regular pattern" width="760">
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2ea44f"></a>
+  <a href="covariance/CHANGELOG_v1.4.2.md"><img alt="Version v1.4.2" src="https://img.shields.io/badge/version-v1.4.2-F2A65A"></a>
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&amp;logoColor=white">
+  <img alt="Platform: Linux" src="https://img.shields.io/badge/platform-Linux-FCC624?logo=linux&amp;logoColor=black">
+  <img alt="Tested on Ubuntu 24.04 LTS" src="https://img.shields.io/badge/tested%20on-Ubuntu%2024.04%20LTS-E95420?logo=ubuntu&amp;logoColor=white">
+  <img alt="Stack: NumPy, SciPy, pandas" src="https://img.shields.io/badge/stack-NumPy%20%7C%20SciPy%20%7C%20pandas-013243?logo=numpy&amp;logoColor=white">
+  <img alt="GPU not required" src="https://img.shields.io/badge/GPU-not%20required-76B900?logo=nvidia&amp;logoColor=white">
+  <img alt="Data: synthetic" src="https://img.shields.io/badge/data-synthetic-6FB7E8">
+  <img alt="Outputs reproduce byte for byte" src="https://img.shields.io/badge/outputs-byte--for--byte%20reproducible-0E1420">
+  <img alt="Built with Claude and ChatGPT" src="https://img.shields.io/badge/built%20with-Claude%20%2B%20ChatGPT-D97757">
+</p>
+
 # Adversarial Anomaly Detection Under Correlated Backgrounds
 
 > **How do you detect a hidden actor that knows how you are trying to detect it?**
@@ -11,7 +28,7 @@ A reproducible research project on ON/OFF anomaly detection when an adaptive act
 The work began as a deliberately speculative thought experiment. Assume some mixture of these is true:
 
 1. Intelligent nonhuman life has been present on Earth throughout human evolution.
-2. It lives among us in stealth, practically indistinguishable from humans.
+2. It lives among us in stealth, practically indistinguishable from humans. (On concealed "cryptoterrestrial" hypotheses, see [Lomas, Case & Masters, 2024](https://static.foxnews.com/foxnews.com/content/uploads/2024/06/ThecryptoterrestrialhypothesisLomasetal.J2024.pdf).)
 3. It follows something like a prime directive: no steering of human affairs.
 4. It is indifferent to us except for planet-scale effects: climate, nuclear war, bioweapon release.
 
@@ -51,6 +68,7 @@ framework/            Core series, v1.0.0 → v1.3.6 (each release replaced this
 covariance/           Covariance stage, v1.4.0 → v1.4.2 (protected / known-Σ analytic benchmark)
 independent-checks/   Scripts used to independently re-run and probe each release
 SHOWCASE.md           Live-demo framing and collaboration asks
+assets/logo.svg       Project logo
 CITATION.cff          How to cite this repository
 ```
 
@@ -149,7 +167,7 @@ The framework is meant for aggregate, infrastructure-level analysis. Applied to 
 - Grimes, D. R. (2016). On the viability of conspiratorial beliefs. *PLOS ONE* 11(1), with correction.
 - Ker, A. D., Pevný, T., Kodovský, J., & Fridrich, J. (2008). The square root law of steganographic capacity. *MM&Sec*.
 - Li, T.-P., & Ma, Y.-Q. (1983). Analysis methods for results in gamma-ray astronomy. *ApJ* 272.
-- Lomas, T., Case, B., & Masters, M. P. (2024). The cryptoterrestrial hypothesis. *Philosophy and Cosmology* 33.
+- Lomas, T., Case, B., & Masters, M. P. (2024). The cryptoterrestrial hypothesis: A case for scientific openness to a concealed earthly explanation for Unidentified Anomalous Phenomena. *Philosophy and Cosmology* 33. [PDF](https://static.foxnews.com/foxnews.com/content/uploads/2024/06/ThecryptoterrestrialhypothesisLomasetal.J2024.pdf). The authors present it as a hypothesis deserving openness, not one they consider likely.
 
 ## Citation
 
