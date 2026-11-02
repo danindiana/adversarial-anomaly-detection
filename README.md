@@ -112,7 +112,7 @@ Headline results (synthetic unless noted):
 - A vendor that chooses its own holdout group can show **+8.8%** lift for a campaign that does nothing by filling a quarter of the holdout with likely non-buyers. Advertiser-randomized holdouts prevent it.
 - Published: across 663 Facebook experiments, non-experimental estimates miss by a median 62–115 percentage points, against median true lifts of 6–28% (Gordon, Moakler & Zettelmeyer, 2023).
 
-None of this shows that any company commits fraud; it shows where measurement is attackable and what protects it. Next step: the Criteo randomized uplift dataset.
+None of this shows that any company commits fraud; it shows where measurement is attackable and what protects it. Next step: [`adfraud/criteo/`](adfraud/criteo/README.md) is a ready-to-run test on the Criteo randomized uplift dataset (14 million users). It asks whether attribution error concentrates where the covariance geometry says selection can hide. The randomized anchor is in: the offer lifts conversion 0.1938% → 0.3089%, which works out to about +3.2 points per exposure. The row-level run is pending.
 
 ## Repository layout
 
@@ -120,6 +120,7 @@ None of this shows that any company commits fraud; it shows where measurement is
 framework/            Core series, v1.0.0 → v1.3.6 (each release replaced this folder; see git history)
 covariance/           Covariance stage, v1.4.0 → v1.4.2 (protected / known-Σ analytic benchmark)
 adfraud/              Application: advertising measurement and ad fraud (case study, figures, literature)
+adfraud/criteo/       First real-data test: Criteo uplift v2.1 pipeline, anchor figures, synthetic smoke test
 independent-checks/   Scripts used to independently re-run and probe each release
 SHOWCASE.md           Live-demo framing and collaboration asks
 assets/logo.svg       Project logo

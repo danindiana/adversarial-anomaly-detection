@@ -175,7 +175,7 @@ The [Criteo uplift dataset](https://ailab.criteo.com/criteo-uplift-prediction-da
 3. Plant synthetic attribution thieves with known reach and cost; measure how well holdout-consistency tests catch them as they adapt.
 4. Estimate feature covariance and test whether the framework's geometry predicts where observational bias lives.
 
-The dataset could not be downloaded from the environment this note was built in, so it is not yet included.
+Steps 1, 2 and 4 are now a runnable pipeline in [`criteo/`](criteo/README.md), with randomized anchor figures from published aggregates, bootstrap intervals, a weak-first-stage guard and a synthetic end-to-end test. The data is not redistributed here (CC BY-NC-SA 4.0); the row-level run is still pending. Step 3 is not built yet.
 
 ## Reproducing
 
